@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         throwableManager.Initialise(gameData);
+        Inputs.Set(gameData.InputData);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,6 +20,35 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        switch (GameStatesManager.CurrentGameState)
+        {
+            case GameStatesManager.GameState.Launch:
+            {
+                UpdateLaunch();
+
+                break;
+            }
+
+            case GameStatesManager.GameState.Rolling:
+            case GameStatesManager.GameState.GameOver:
+            {
+                Restart();
+
+                break;
+            }
+        }
+    }
+
+    private void UpdateLaunch()
+    {
+        throwableManager.UpdateLaunch();
+    }
+
+    private void Restart()
+    {
+        if (Inputs.IsKeyUp(Inputs.restart))
+        {
+            throwableManager.Restart();
+        }
     }
 }

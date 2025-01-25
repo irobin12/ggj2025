@@ -22,25 +22,25 @@ public class Throwable : MonoBehaviour
 
     private void CheckMovementInput()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Inputs.IsKeyDown(Inputs.moveLeft))
         {
             moveLeft = true;
             return;
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        if (Inputs.IsKeyUp(Inputs.moveLeft))
         {
             moveLeft = false;
             return;
         }
         
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Inputs.IsKeyDown(Inputs.moveRight))
         {
             moveRight = true;
             return;
         }
 
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        if (Inputs.IsKeyUp(Inputs.moveRight))
         {
             moveRight = false;
             return;

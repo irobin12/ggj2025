@@ -44,7 +44,7 @@ public class ThrowableManager : MonoBehaviour
         ShowLauncherVisuals(true);
     }
 
-    private void Restart()
+    public void Restart()
     {
         StopAllCoroutines();
         transform.position = initialPosition;
@@ -58,31 +58,12 @@ public class ThrowableManager : MonoBehaviour
         GameStatesManager.CurrentGameState = GameStatesManager.GameState.Launch;
     }
 
-    private void Update()
+    public void UpdateLaunch()
     {
-        switch (GameStatesManager.CurrentGameState)
+        UpdateLaunchingRotation();
+        if (Input.GetMouseButtonDown(0))
         {
-            case GameStatesManager.GameState.Launch:
-            {
-                UpdateLaunchingRotation();
-                if (Input.GetMouseButtonDown(0))
-                {
-                    LaunchThrowable();
-                }
-
-                break;
-            }
-
-            case GameStatesManager.GameState.Rolling:
-            case GameStatesManager.GameState.GameOver:
-            {
-                if (Input.GetKeyUp(KeyCode.R))
-                {
-                    Restart();
-                }
-                
-                break;
-            }
+            LaunchThrowable();
         }
     }
 

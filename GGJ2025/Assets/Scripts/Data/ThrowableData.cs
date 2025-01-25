@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item", menuName = "Data/Item", order = 1)]
+[CreateAssetMenu(fileName = "Throwable", menuName = "Data/Throwable", order = 1)]
 public class ThrowableData : ScriptableObject
 {
     [SerializeField] private int health;
