@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Game
   m_EditorClassIdentifier: 
   maxLaunchAngle: 45
-  maxLaunchImpulse: 10
+  maxLaunchImpulse: 50
   bubbleWrapAmount: 20
   throwables:
   - {fileID: 11400000, guid: 19290baf3421246c3966fb37e2eb7db0, type: 2}

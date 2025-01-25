@@ -9,19 +9,18 @@ public class ThrowableManager : MonoBehaviour
     [SerializeField] private Color maxImpulseColor = Color.red;
     
     private Vector3 cameraInitialPosition;
+    private Vector3 cameraStartPosition;
+    
     private Vector3 throwableInitialPosition;
     private Quaternion throwableInitialRotation;
+    
     private float minLaunchAngle;
     private float maxLaunchAngle;
     private int maxLaunchImpulse;
-    private Vector3 initialPosition;
-    private Quaternion initialRotation;
 
     public void Initialize(int gameDataMaxLaunchAngle, int gameDataMaxLaunchImpulse)
     {
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
-        // cameraInitialPosition = followerCamera.transform.position;
+        cameraInitialPosition = followerCamera.transform.position;
         throwableInitialPosition = throwable.transform.position;
         throwableInitialRotation = throwable.transform.rotation;
         
@@ -35,8 +34,7 @@ public class ThrowableManager : MonoBehaviour
 
     private void Restart()
     {
-        transform.position = initialPosition;
-        transform.rotation = initialRotation;
+        followerCamera.transform.position = cameraInitialPosition;
         throwable.Restart(throwableInitialPosition, throwableInitialRotation);
         ShowLauncherVisuals(true);
         GameStatesManager.CurrentGameState = GameStatesManager.GameState.Launch;
@@ -72,6 +70,7 @@ public class ThrowableManager : MonoBehaviour
 
     private void LaunchThrowable()
     {
+        cameraStartPosition = followerCamera.transform.position;
         throwable.Launch(maxLaunchImpulse);
         ShowLauncherVisuals(false);
         GameStatesManager.SetGameState(GameStatesManager.GameState.Rolling);
@@ -94,9 +93,8 @@ public class ThrowableManager : MonoBehaviour
 
     private void UpdateCameraPositionFromThrowable()
     {
-        transform.position = initialPosition;
         Vector3 positionOffset = throwable.transform.position - throwableInitialPosition;
-        transform.position = initialPosition + positionOffset;
+        followerCamera.transform.position = cameraStartPosition + positionOffset;
     }
 
     private void ShowLauncherVisuals(bool show)

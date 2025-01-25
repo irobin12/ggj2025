@@ -13,7 +13,7 @@ public class Throwable : MonoBehaviour
 
     public void Launch(float impulse)   
     {
-        rigidBody.AddForce(new Vector3(0, 0, impulse), ForceMode.Impulse);
+        rigidBody.AddRelativeForce(new Vector3(0, 0, impulse), ForceMode.Impulse);
         SetGravity(true);
     }
 
