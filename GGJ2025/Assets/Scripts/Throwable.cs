@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Throwable : MonoBehaviour
 {
-    private Rigidbody rigidBody;
+    public Rigidbody rigidBody { get; private set; }
 
     private void Awake()
     {
