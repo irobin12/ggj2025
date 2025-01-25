@@ -14,11 +14,14 @@ public class ThrowableManager : MonoBehaviour
     private float minLaunchAngle;
     private float maxLaunchAngle;
     private int maxLaunchImpulse;
-    private Vector2 screenMiddle;
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
 
     public void Initialize(int gameDataMaxLaunchAngle, int gameDataMaxLaunchImpulse)
     {
-        cameraInitialPosition = followerCamera.transform.position;
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+        // cameraInitialPosition = followerCamera.transform.position;
         throwableInitialPosition = throwable.transform.position;
         throwableInitialRotation = throwable.transform.rotation;
         
@@ -26,18 +29,55 @@ public class ThrowableManager : MonoBehaviour
         maxLaunchAngle = throwableInitialRotation.eulerAngles.y + gameDataMaxLaunchAngle;
         
         maxLaunchImpulse = gameDataMaxLaunchImpulse;
-        screenMiddle = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        
+        ShowLauncherVisuals(true);
+    }
+
+    private void Restart()
+    {
+        transform.position = initialPosition;
+        transform.rotation = initialRotation;
+        throwable.Restart(throwableInitialPosition, throwableInitialRotation);
+        ShowLauncherVisuals(true);
+        GameStatesManager.CurrentGameState = GameStatesManager.GameState.Launch;
     }
 
     private void Update()
     {
-        if (GameStatesManager.CurrentGameState == GameStatesManager.GameState.Launch)
+        switch (GameStatesManager.CurrentGameState)
         {
-            UpdateLauncher();
+            case GameStatesManager.GameState.Launch:
+            {
+                UpdateLauncherRotation();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    LaunchThrowable();
+                }
+
+                break;
+            }
+
+            case GameStatesManager.GameState.Rolling:
+            case GameStatesManager.GameState.GameOver:
+            {
+                if (Input.GetKeyUp(KeyCode.R))
+                {
+                    Restart();
+                }
+                
+                break;
+            }
         }
     }
 
-    private void UpdateLauncher()
+    private void LaunchThrowable()
+    {
+        throwable.Launch(maxLaunchImpulse);
+        ShowLauncherVisuals(false);
+        GameStatesManager.SetGameState(GameStatesManager.GameState.Rolling);
+    }
+
+    private void UpdateLauncherRotation()
     {
         var mousePosition = Input.mousePosition;
         var newAngle = Mathf.LerpAngle(minLaunchAngle, maxLaunchAngle, mousePosition.x / Screen.width);
@@ -54,11 +94,16 @@ public class ThrowableManager : MonoBehaviour
 
     private void UpdateCameraPositionFromThrowable()
     {
-        followerCamera.transform.position = cameraInitialPosition;
+        transform.position = initialPosition;
         Vector3 positionOffset = throwable.transform.position - throwableInitialPosition;
-        followerCamera.transform.position = cameraInitialPosition + positionOffset;
+        transform.position = initialPosition + positionOffset;
     }
 
+    private void ShowLauncherVisuals(bool show)
+    {
+        launcherVisual.SetActive(show);
+    }
+    
     private void ColorVisuals(Color color)
     {
         //TODO cleaner when proper visuals
