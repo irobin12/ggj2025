@@ -64,7 +64,7 @@ public class Throwable : MonoBehaviour
         }
     }
 
-    public void Launch(int launchImpulse)   
+    public void Launch(float launchImpulse)   
     {
         rigidBody.AddRelativeForce(new Vector3(0, 0, launchImpulse), ForceMode.Impulse);
         SetGravity(true);

@@ -21,7 +21,13 @@ public class ThrowableManager : MonoBehaviour
     
     private float minLaunchAngle;
     private float maxLaunchAngle;
+
+    private int minLaunchImpulse;
     private int maxLaunchImpulse;
+    private float launchImpulse;
+    
+    private float maxImpulseHeldDownTime;
+    private float impulseHeldDownTime;
 
     public void Initialise(GameData data)
     {
@@ -39,9 +45,21 @@ public class ThrowableManager : MonoBehaviour
         
         minLaunchAngle = throwableInitialRotation.eulerAngles.y - data.MaxLaunchAngle;
         maxLaunchAngle = throwableInitialRotation.eulerAngles.y + data.MaxLaunchAngle;
-        maxLaunchImpulse = data.MaxLaunchImpulse;
         
+        minLaunchImpulse = data.MinLaunchImpulse;
+        maxLaunchImpulse = data.MaxLaunchImpulse;
+        maxImpulseHeldDownTime = data.MaxImpulseHeldDownTime;
+        
+        SetStartingValues();
+
         ShowLauncherVisuals(true);
+    }
+
+    private void SetStartingValues()
+    {
+        launchImpulse = minLaunchImpulse;
+        impulseHeldDownTime = 0f;
+        ColorVisuals(0);
     }
 
     public void Restart()
@@ -53,6 +71,8 @@ public class ThrowableManager : MonoBehaviour
         followerCamera.transform.position = cameraInitialPosition;
         followerCamera.transform.rotation = cameraInitialRotation;
         
+        SetStartingValues();
+
         throwable.Restart(throwableInitialPosition, throwableInitialRotation);
         ShowLauncherVisuals(true);
         GameStatesManager.CurrentGameState = GameStatesManager.GameState.Launch;
@@ -61,7 +81,20 @@ public class ThrowableManager : MonoBehaviour
     public void UpdateLaunch()
     {
         UpdateLaunchingRotation();
-        if (Input.GetMouseButtonDown(0))
+        
+        if (Input.GetMouseButton(0))
+        {
+            impulseHeldDownTime += Time.deltaTime;
+            
+            if (launchImpulse < maxLaunchImpulse)
+            {
+                var lerpValue = Mathf.InverseLerp(0, maxImpulseHeldDownTime, impulseHeldDownTime);
+                launchImpulse = Mathf.Lerp(minLaunchImpulse, maxLaunchImpulse, lerpValue);
+                ColorVisuals(lerpValue);
+            }
+        }
+        
+        if (Input.GetMouseButtonUp(0))
         {
             LaunchThrowable();
         }
@@ -69,7 +102,7 @@ public class ThrowableManager : MonoBehaviour
 
     private void LaunchThrowable()
     {
-        throwable.Launch(maxLaunchImpulse);
+        throwable.Launch(launchImpulse);
         ShowLauncherVisuals(false);
         GameStatesManager.SetGameState(GameStatesManager.GameState.Rolling);
     }
@@ -101,10 +134,15 @@ public class ThrowableManager : MonoBehaviour
         launcherVisual.SetActive(show);
     }
     
-    private void ColorVisuals(Color color)
+    private void ColorVisuals(float lerpValue)
     {
         //TODO cleaner when proper visuals
         var sprites = launcherVisual.GetComponentsInChildren<SpriteRenderer>();
+        
+        
+        
+        var color = Color.Lerp(minImpulseColor, maxImpulseColor, lerpValue);
+        
         foreach (var sprite in sprites)
         {
             sprite.color = color;
