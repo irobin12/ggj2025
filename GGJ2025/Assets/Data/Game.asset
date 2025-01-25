@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bcdff158d94e60bb259d3d18f9abb2, type: 3}
   m_Name: Game
   m_EditorClassIdentifier: 
+  inputData: {fileID: 11400000, guid: a715c897ebb804d668128c7a0305b8c1, type: 2}
   maxLaunchAngle: 45
-  screenProportionForLaunchAngle: 0.8
   maxLaunchImpulse: 120
-  sidewaysMoveImpulse: 30
+  sidewaysMoveImpulse: 2
   bubbleWrapAmount: 20
   throwables:
   - {fileID: 11400000, guid: 19290baf3421246c3966fb37e2eb7db0, type: 2}

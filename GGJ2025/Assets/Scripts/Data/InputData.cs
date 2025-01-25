@@ -1,0 +1,14 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "Input", menuName = "Data/Input", order = 1)]
+public class InputData : ScriptableObject
+{
+    [SerializeField] private KeyCode[] moveLeft;
+    public KeyCode[] MoveLeft => moveLeft;
+    
+    [SerializeField] private KeyCode[] moveRight;
+    public KeyCode[] MoveRight => moveRight;
+
+    [SerializeField] private KeyCode[] restart;
+    public KeyCode[] Restart => restart;
+}

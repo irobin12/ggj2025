@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Game", menuName = "Data/Game", order = 0)]
 public class GameData : ScriptableObject
 {
+    [SerializeField] private InputData inputData;
+    public InputData InputData => inputData;
+    
     [Range(0, 90)]
     [SerializeField] private int maxLaunchAngle = 45;
     public int MaxLaunchAngle => maxLaunchAngle;
