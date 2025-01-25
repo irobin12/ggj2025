@@ -3,17 +3,70 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Throwable : MonoBehaviour
 {
-    public Rigidbody rigidBody { get; private set; }
+    private Rigidbody rigidBody;
+    private int turnImpulse;
+    private bool moveLeft;
+    private bool moveRight;
 
-    private void Awake()
+    public void Initialise(GameData data)
     {
         rigidBody = GetComponent<Rigidbody>();
         SetGravity(false);
+        turnImpulse = data.SidewaysMoveImpulse;
     }
 
-    public void Launch(float impulse)   
+    private void Update()
     {
-        rigidBody.AddRelativeForce(new Vector3(0, 0, impulse), ForceMode.Impulse);
+        CheckMovementInput();
+    }
+
+    private void CheckMovementInput()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            moveLeft = true;
+            return;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            moveLeft = false;
+            return;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            moveRight = true;
+            return;
+        }
+
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            moveRight = false;
+            return;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        MoveSideways();
+    }
+
+    private void MoveSideways()
+    {
+        if (moveLeft)
+        {
+            rigidBody.AddForce(Vector3.left * turnImpulse , ForceMode.Impulse);
+        } 
+        else if (moveRight)
+        {
+            rigidBody.AddForce(Vector3.right * turnImpulse , ForceMode.Impulse);
+        }
+    }
+
+    public void Launch(int launchImpulse)   
+    {
+        rigidBody.AddRelativeForce(new Vector3(0, 0, launchImpulse), ForceMode.Impulse);
         SetGravity(true);
     }
 

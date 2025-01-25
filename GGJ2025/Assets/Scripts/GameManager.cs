@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     
     private void Awake()
     {
-        throwableManager.Initialize(gameData.MaxLaunchAngle, gameData.MaxLaunchImpulse, gameData.ScreenProportionForLaunchAngle);
+        throwableManager.Initialise(gameData);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

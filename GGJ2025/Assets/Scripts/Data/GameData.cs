@@ -16,6 +16,10 @@ public class GameData : ScriptableObject
     [Range(10, 500)]
     [SerializeField] private int maxLaunchImpulse = 50;
     public int MaxLaunchImpulse => maxLaunchImpulse;
+
+    [Range(1, 10)]
+    [SerializeField] private int sidewaysMoveImpulse = 5;
+    public int SidewaysMoveImpulse => sidewaysMoveImpulse;
     
     [SerializeField] private int bubbleWrapAmount;
     public int BubbleWrapAmount => bubbleWrapAmount;

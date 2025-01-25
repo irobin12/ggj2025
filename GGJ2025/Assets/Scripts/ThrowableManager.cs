@@ -21,10 +21,9 @@ public class ThrowableManager : MonoBehaviour
     
     private float minLaunchAngle;
     private float maxLaunchAngle;
-    
     private int maxLaunchImpulse;
 
-    public void Initialize(int dataMaxLaunchAngle, int dataMaxLaunchImpulse, float dataScreenProportionForLaunchAngle)
+    public void Initialise(GameData data)
     {
         initialPosition = transform.position;
         initialRotation = transform.rotation;
@@ -34,13 +33,13 @@ public class ThrowableManager : MonoBehaviour
         
         throwableInitialPosition = throwable.transform.position;
         throwableInitialRotation = throwable.transform.rotation;
+        throwable.Initialise(data);
 
         cameraDeltaPositionFromThrowable = throwableInitialPosition - cameraInitialPosition;
         
-        minLaunchAngle = throwableInitialRotation.eulerAngles.y - dataMaxLaunchAngle;
-        maxLaunchAngle = throwableInitialRotation.eulerAngles.y + dataMaxLaunchAngle;
-        
-        maxLaunchImpulse = dataMaxLaunchImpulse;
+        minLaunchAngle = throwableInitialRotation.eulerAngles.y - data.MaxLaunchAngle;
+        maxLaunchAngle = throwableInitialRotation.eulerAngles.y + data.MaxLaunchAngle;
+        maxLaunchImpulse = data.MaxLaunchImpulse;
         
         ShowLauncherVisuals(true);
     }
