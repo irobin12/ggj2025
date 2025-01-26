@@ -2,35 +2,32 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private const int DefaultLevelIndex = 0;
     [SerializeField] private GameData gameData;
     [SerializeField] private ThrowableManager throwableManager;
+    [SerializeField] private UIManager uiManager;
     
     private void Awake()
     {
         throwableManager.Initialise(gameData);
         Inputs.Set(gameData.InputData);
+        LevelsManager.SetUp(gameData.LevelNames);
+        LevelsManager.LoadLevelAdditive(DefaultLevelIndex);
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        switch (GameStatesManager.CurrentGameState)
+        switch (GameStatesManager.currentGameState)
         {
-            case GameStatesManager.GameState.Launch:
+            case GameStatesManager.States.Launch:
             {
                 UpdateLaunch();
 
                 break;
             }
 
-            case GameStatesManager.GameState.Rolling:
-            case GameStatesManager.GameState.GameOver:
+            case GameStatesManager.States.Rolling:
+            case GameStatesManager.States.GameOver:
             {
                 Restart();
 

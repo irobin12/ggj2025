@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class ThrowableManager : MonoBehaviour
@@ -75,7 +74,7 @@ public class ThrowableManager : MonoBehaviour
 
         throwable.Restart(throwableInitialPosition, throwableInitialRotation);
         ShowLauncherVisuals(true);
-        GameStatesManager.CurrentGameState = GameStatesManager.GameState.Launch;
+        GameStatesManager.currentGameState = GameStatesManager.States.Launch;
     }
 
     public void UpdateLaunch()
@@ -104,7 +103,7 @@ public class ThrowableManager : MonoBehaviour
     {
         throwable.Launch(launchImpulse);
         ShowLauncherVisuals(false);
-        GameStatesManager.SetGameState(GameStatesManager.GameState.Rolling);
+        GameStatesManager.SetGameState(GameStatesManager.States.Rolling);
     }
 
     private void UpdateLaunchingRotation()
@@ -117,7 +116,7 @@ public class ThrowableManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameStatesManager.CurrentGameState == GameStatesManager.GameState.Rolling)
+        if (GameStatesManager.currentGameState == GameStatesManager.States.Rolling)
         {
             UpdateCameraTransformFromThrowable();
         }

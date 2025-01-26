@@ -21,3 +21,6 @@ MonoBehaviour:
   bubbleWrapAmount: 20
   throwables:
   - {fileID: 11400000, guid: 19290baf3421246c3966fb37e2eb7db0, type: 2}
+  levelNames:
+  - EasyLevel1
+  - HardLevel2

@@ -1,6 +1,6 @@
 public static class GameStatesManager
 {
-    public enum GameState
+    public enum States
     {
         StartMenu,
         Launch,
@@ -8,11 +8,11 @@ public static class GameStatesManager
         GameOver
     }
     
-    public static GameState CurrentGameState = GameState.Launch;
+    public static States currentGameState = States.StartMenu;
 
-    public static void SetGameState(GameState gameState)
+    public static void SetGameState(States gameState)
     {
-        CurrentGameState = gameState;
+        currentGameState = gameState;
     }
 
 }

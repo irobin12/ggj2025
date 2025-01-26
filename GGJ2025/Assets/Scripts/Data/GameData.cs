@@ -32,4 +32,8 @@ public class GameData : ScriptableObject
     public int BubbleWrapAmount => bubbleWrapAmount;
     
     [SerializeField] private ThrowableData[] throwables;
+    public ThrowableData[] Throwables => throwables;
+    
+    [SerializeField] private string[] levelNames;
+    public string[] LevelNames => levelNames;
 }
