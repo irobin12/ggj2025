@@ -14,7 +14,7 @@ public class GameOverScreen : MonoBehaviour
     {
         scoreText.text = $"Final score: {score}";
         saveText.text = $"You saved: {save}/{maxSaves}";
-        levelText.text = $"Current level: {LevelsManager.currentLevelName}";
+        levelText.text = LevelsManager.currentLevelName;
     }
     
     public void HandleMenuButton()
