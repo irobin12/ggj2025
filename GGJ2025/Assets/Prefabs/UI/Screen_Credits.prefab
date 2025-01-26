@@ -1257,7 +1257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
       propertyPath: m_text
-      value: Jason - Music
+      value: JaceSound - Music
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
