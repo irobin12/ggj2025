@@ -59,6 +59,8 @@ public class ThrowableManager : MonoBehaviour
     private void OnThrowableDied()
     {
         ThrowableDied?.Invoke(CurrentThrowable);
+        CurrentThrowable.gameObject.SetActive(false);
+        GameStatesManager.SetGameState(GameStatesManager.States.GameOver);
     }
 
     private void OnThrowableDamaged()

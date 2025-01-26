@@ -96,4 +96,9 @@ public class UIManager : MonoBehaviour
     {
         rollingScreen.ChangeValues(throwable.CurrentHealth, throwable.CurrentWrap);
     }
+
+    public void SetGameOver(int saveCount, int finalScore)
+    {
+        gameOverScreen.SetTexts(finalScore, saveCount);
+    }
 }

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager uiManager;
     [SerializeField] private WrapManager wrapManager;
     private bool firstRun = true;
+    private int saveCount = 0;
+    private int finalScore = 0;
     
     private void Awake()
     {
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
                 uiManager.SetHUD(throwableManager.CurrentThrowable.Icon, throwableManager.CurrentThrowable.MaxHealthPoints, throwableManager.CurrentThrowable.AssignedWrap);
                 break;
             case GameStatesManager.States.GameOver:
+                uiManager.SetGameOver(saveCount, finalScore);
                 break;
         }
     }
