@@ -3,14 +3,22 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Throwable : MonoBehaviour
 {
+    public string Name { get; private set; }
+    public int HealthPoints {get; private set;}
+    public int AssignedWrap {get; private set;}
+
+    [SerializeField] private Renderer wrap;
+    
     private Rigidbody rigidBody;
+    private Material wrapMaterial;
     private int turnImpulse;
     private bool moveLeft;
     private bool moveRight;
 
-    public string Name { get; private set; }
-    public int HealthPoints {get; private set;}
-    public int AssignedWrap {get; private set;}
+    private void Awake()
+    {
+        wrapMaterial = wrap.material;
+    }
 
     public void Initialise(int sidewaysMoveImpulse, string throwableName, int hp)
     {
@@ -20,12 +28,15 @@ public class Throwable : MonoBehaviour
         turnImpulse = sidewaysMoveImpulse;
         Name = throwableName;
         HealthPoints = hp;
-        SetAssignedWrap(0);
     }
 
-    public void SetAssignedWrap(int amount)
+    public void SetAssignedWrap(int amount, int maxPotentialAmount, float maxWrapOpacity)
     {
         AssignedWrap = amount;
+        Color color = wrapMaterial.color;
+        var lerpValue = Mathf.InverseLerp(0, maxPotentialAmount, AssignedWrap);
+        color.a = Mathf.Lerp(0, maxWrapOpacity, lerpValue);
+        wrap.material.color = color;
     }
 
     private void Update()

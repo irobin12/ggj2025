@@ -6,18 +6,25 @@ public class WrapManager : MonoBehaviour
     public Action<Throwable> StartClicked;
     
     [SerializeField] private WrapScreen wrapScreen;
+    [Range(0.1f, 1f)][Tooltip("In %")]
+    [SerializeField] private float maxWrapOpacity = 0.25f;
     
     private Throwable[] throwables;
     private Throwable currentThrowable;
     private int currentThrowableIndex;
 
-    private int maxWrap;
+    private int maxWrapAmount;
     private int totalAssignedWrap;
-    private int RemainingWrap => maxWrap - totalAssignedWrap;
+    private int RemainingWrap => maxWrapAmount - totalAssignedWrap;
     
     public void Initialise(GameData gameData)
     {
-        maxWrap = gameData.BubbleWrapAmount;
+        maxWrapAmount = gameData.BubbleWrapAmount;
+        totalAssignedWrap = 0;
+        
+        wrapScreen.SelectionChanged -= OnSelectionChanged;
+        wrapScreen.AmountChanged -= OnAmountChanged;
+        wrapScreen.StartClicked -= OnStartClicked;
         
         wrapScreen.SelectionChanged += OnSelectionChanged;
         wrapScreen.AmountChanged += OnAmountChanged;
@@ -37,6 +44,7 @@ public class WrapManager : MonoBehaviour
             var data = throwablesData[index];
             var instance = Instantiate(data.Prefab, transform);
             instance.Initialise(gameData.SidewaysMoveImpulse, data.CuteName, data.Health);
+            instance.SetAssignedWrap(0, maxWrapAmount, maxWrapOpacity);
             throwables[index] = instance;
             instance.gameObject.SetActive(false);
         }
@@ -68,7 +76,7 @@ public class WrapManager : MonoBehaviour
     
     private void OnAmountChanged(int delta)
     {
-        currentThrowable.SetAssignedWrap(currentThrowable.AssignedWrap + delta);
+        currentThrowable.SetAssignedWrap(currentThrowable.AssignedWrap + delta, maxWrapAmount, maxWrapOpacity);
         totalAssignedWrap += delta;
         SetUI();
     }

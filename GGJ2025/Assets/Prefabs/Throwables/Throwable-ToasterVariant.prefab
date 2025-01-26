@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 525570600274228700, guid: 1898e3f3c364c4ee0a255b2180cd1acb, type: 3}
+      propertyPath: wrap
+      value: 
+      objectReference: {fileID: 9023963782248848110}
     - target: {fileID: 2385109890406518681, guid: 1898e3f3c364c4ee0a255b2180cd1acb, type: 3}
       propertyPath: m_Name
       value: Throwable-ToasterVariant
@@ -131,5 +135,10 @@ PrefabInstance:
 --- !u!4 &6900190830273331609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7091455478907716112, guid: 390e93fa2d77e7f40b38e5badba3293a, type: 3}
+  m_PrefabInstance: {fileID: 4443801793068221321}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9023963782248848110 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4652219585368267111, guid: 390e93fa2d77e7f40b38e5badba3293a, type: 3}
   m_PrefabInstance: {fileID: 4443801793068221321}
   m_PrefabAsset: {fileID: 0}
