@@ -1,0 +1,47 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3161908922",
+    "Type": "User",
+    "GUID": "{72131FC9-E18A-4487-8F83-19A5DAD178BB}",
+    "Language": "SFX",
+    "Hash": "{32DE19F3-8749-D720-5B98-56267A9A9E31}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
+    "ShortName": "Main",
+    "Path": "Main.bnk",
+    "Media": [
+     {
+      "Id": "667474730",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "bubble mmi.wav",
+      "CachePath": "27/{276D8278-A2F2-9CFC-80B9-407433AD4945}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1040287178",
+      "Name": "Game_Start_Music",
+      "ObjectPath": "\\Events\\Default Work Unit\\Game_Start_Music",
+      "GUID": "{76E16E3D-03DD-45B3-864E-230C5BCC95BD}",
+      "DurationType": "OneShot",
+      "DurationMin": "19.200024",
+      "DurationMax": "19.200024",
+      "MediaRefs": [
+       {
+        "Id": "667474730"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{E6E7BD50-032A-B862-1F9E-D6FA675F6433}"
+ }
+}
