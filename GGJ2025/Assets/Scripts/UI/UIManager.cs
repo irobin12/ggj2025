@@ -84,7 +84,8 @@ public class UIManager : MonoBehaviour
     private IEnumerator ChangeGameState()
     {
         yield return null;
-        GameStatesManager.SetGameState(GameStatesManager.States.Launch);
+        // GameStatesManager.SetGameState(GameStatesManager.States.Launch);
+        GameStatesManager.SetGameState(GameStatesManager.States.Wrap);
     }
 
     private void OnDestroy()

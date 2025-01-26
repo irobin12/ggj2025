@@ -7,15 +7,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameData gameData;
     [SerializeField] private ThrowableManager throwableManager;
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private WrapManager wrapManager;
     
     private void Awake()
     {
-        throwableManager.Initialise(gameData);
+        // throwableManager.Initialise(gameData);
         Inputs.Set(gameData.InputData);
         LevelsManager.SetUp(gameData.LevelNames);
         LevelsManager.LoadLevelAdditive(DefaultLevelIndex);
         GameStatesManager.StateChanged += OnStateChanged;
         GameStatesManager.SetGameState(GameStatesManager.States.StartMenu);
+        wrapManager.StartClicked += OnStartClicked;
+    }
+
+    private void OnStartClicked(Throwable throwable)
+    {
+        throwableManager.Initialise(gameData, throwable);
+        GameStatesManager.SetGameState(GameStatesManager.States.Launch);
     }
 
     private void OnStateChanged(GameStatesManager.States state)
@@ -24,10 +32,13 @@ public class GameManager : MonoBehaviour
         {
             case GameStatesManager.States.StartMenu:
                 throwableManager.ShowThrower(false);
+                wrapManager.gameObject.SetActive(false);
                 break;
             case GameStatesManager.States.Credits:
                 break;
             case GameStatesManager.States.Wrap:
+                wrapManager.gameObject.SetActive(true);
+                wrapManager.Initialise(gameData);
                 break;
             case GameStatesManager.States.Launch:
                 throwableManager.ShowThrower(true);
