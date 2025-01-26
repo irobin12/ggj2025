@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5091448022697968975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -656,7 +656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_fontSize
-      value: 120
+      value: 110.45
       objectReference: {fileID: 0}
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_fontSizeMax
@@ -700,9 +700,45 @@ PrefabInstance:
       value: Wrap it!
       objectReference: {fileID: 0}
     - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
-      propertyPath: m_HorizontalAlignment
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 51a5715cef0a5fb4d8ec240291223357, type: 2}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 21445f4203f98974cb7b3f741d12b223, type: 2}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontColorGradientPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: 081858b68f2eefb4aa2cdf45a508905c, type: 2}
     - target: {fileID: 1137622777407871249, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
       propertyPath: m_Name
       value: HeaderArea
@@ -1475,7 +1511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137622777407871249, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3926292793453056451, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
       propertyPath: m_Pivot.x
