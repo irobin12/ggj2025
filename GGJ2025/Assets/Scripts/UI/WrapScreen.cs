@@ -14,14 +14,34 @@ public class WrapScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI wrapRemainingText;
     [SerializeField] private TextMeshProUGUI wrapAssignedNumberText;
     [SerializeField] private TextMeshProUGUI assignAllText;
+    
+    [SerializeField] private Button upButton;
+    [SerializeField] private Button downButton;
     [SerializeField] private Button startButton;
 
-    public void Set(string throwableName, string hp, int assigned, int remaining)
+    public void Set(string throwableName, int hp, int assigned, int remaining)
+    {
+        SetTexts(throwableName, hp, assigned, remaining);
+
+        bool hasWrapRemaining = remaining > 0;
+        bool hasWrapAssigned = assigned > 0;
+        SetButtons(hasWrapRemaining, hasWrapAssigned, !hasWrapRemaining);
+    }
+
+    private void SetTexts(string throwableName, int hp, int assigned, int remaining)
     {
         nameText.text = throwableName;
         healthText.text = $"Health: {hp}";
         wrapAssignedNumberText.text = assigned.ToString();
-        wrapRemainingText.text = remaining.ToString();
+        wrapRemainingText.text = $"Total wrap remaining: {remaining}";
+    }
+
+    private void SetButtons(bool up, bool down, bool start)
+    {
+        upButton.interactable = up;
+        downButton.interactable = down;
+        startButton.interactable = start;
+        assignAllText.gameObject.SetActive(!start);
     }
 
     public void HandleLeftClicked()

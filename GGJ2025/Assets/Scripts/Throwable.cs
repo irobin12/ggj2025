@@ -8,17 +8,24 @@ public class Throwable : MonoBehaviour
     private bool moveLeft;
     private bool moveRight;
 
-    private string throwableNme;
-    private int healthPoints;
+    public string Name { get; private set; }
+    public int HealthPoints {get; private set;}
+    public int AssignedWrap {get; private set;}
 
-    public void Initialise(int sidewaysMoveImpulse, string throwableName, int healthPoints)
+    public void Initialise(int sidewaysMoveImpulse, string throwableName, int hp)
     {
         rigidBody = GetComponent<Rigidbody>();
         SetGravity(false);
         
         turnImpulse = sidewaysMoveImpulse;
-        this.throwableNme = throwableName;
-        this.healthPoints = healthPoints;
+        Name = throwableName;
+        HealthPoints = hp;
+        SetAssignedWrap(0);
+    }
+
+    public void SetAssignedWrap(int amount)
+    {
+        AssignedWrap = amount;
     }
 
     private void Update()

@@ -18,7 +18,7 @@ MonoBehaviour:
   maxLaunchImpulse: 500
   maxImpulseHeldDownTime: 6
   sidewaysMoveImpulse: 5
-  bubbleWrapAmount: 20
+  bubbleWrapAmount: 5
   throwables:
   - {fileID: 11400000, guid: 747847181c45e4cd3b9c67b91c91a0d9, type: 2}
   - {fileID: 11400000, guid: be4fd8fb1bc5d424b8089fbbe83185b9, type: 2}
