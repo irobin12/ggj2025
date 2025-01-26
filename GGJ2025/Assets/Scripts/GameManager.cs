@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     {
         // Final score: Remaining character health * Remaining bubble-wrap.
         // Ah, yeah I didn't think of that. Is it possible to set the scoring to a minimum of 1? without resetting Bubble wrap HP
-        var thisScore = Mathf.Max(1, throwable.CurrentHealth * throwable.CurrentWrap);
+        var thisScore = throwable.CurrentHealth * Mathf.Max(1, throwable.CurrentWrap);
         finalScore += thisScore;
         saveCount++;
 

@@ -581,11 +581,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_fontSize
-      value: 110.45
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
+      propertyPath: m_margin.w
+      value: -48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
+      propertyPath: m_margin.y
+      value: -24
       objectReference: {fileID: 0}
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_fontSizeMax
-      value: 120
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -929,11 +937,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_fontSize
-      value: 56
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
+      propertyPath: m_margin.w
+      value: -24
       objectReference: {fileID: 0}
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_fontSizeMax
-      value: 56
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -1057,8 +1069,20 @@ PrefabInstance:
       value: wrap remaining
       objectReference: {fileID: 0}
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
+      propertyPath: m_fontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
+      propertyPath: m_margin.w
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1730,6 +1754,18 @@ PrefabInstance:
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_text
       value: 'Bubblewrap assigned:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
+      propertyPath: m_fontSize
+      value: 96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
+      propertyPath: m_margin.w
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 5750506983023505063, guid: 7be345b24f9b643108a3289140d2f7aa, type: 3}
       propertyPath: m_HorizontalAlignment
