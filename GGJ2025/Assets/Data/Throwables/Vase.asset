@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   prefab: {fileID: 3299051862029912667, guid: 39a794911e431774083a3f221594173b, type: 3}
-  name: Swanky
+  cuteName: Swanky
   description: 
+  icon: {fileID: 21300000, guid: 60ed83265a85a4c1cb012cab9ddf045e, type: 3}

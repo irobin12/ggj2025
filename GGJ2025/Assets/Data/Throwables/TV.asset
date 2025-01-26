@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   prefab: {fileID: 3299051862029912667, guid: 38061568eb0e3c34380097f8f24d6528, type: 3}
-  name: Telly
+  cuteName: Telly
   description: 
+  icon: {fileID: 21300000, guid: b3efedc6ebdbd46f59158cb32ac6461f, type: 3}

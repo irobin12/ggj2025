@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   prefab: {fileID: 3299051862029912667, guid: a041bc3f74e0984409938287b344de16, type: 3}
-  name: Boxy
+  cuteName: Boxy
   description: 
+  icon: {fileID: 21300000, guid: 3e24c99c4b1c742349dbef837677ce87, type: 3}

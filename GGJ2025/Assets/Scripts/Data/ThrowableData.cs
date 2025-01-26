@@ -15,4 +15,7 @@ public class ThrowableData : ScriptableObject
     
     [SerializeField] private string description;
     public string Description => description;
+    
+    [SerializeField] private Sprite icon;
+    public Sprite Icon => icon;
 }

@@ -43,7 +43,7 @@ public class WrapManager : MonoBehaviour
         {
             var data = throwablesData[index];
             var instance = Instantiate(data.Prefab, transform);
-            instance.Initialise(gameData.SidewaysMoveImpulse, data.CuteName, data.Health);
+            instance.Initialise(gameData.SidewaysMoveImpulse, data);
             instance.SetAssignedWrap(0, maxWrapAmount, maxWrapOpacity);
             throwables[index] = instance;
             instance.gameObject.SetActive(false);

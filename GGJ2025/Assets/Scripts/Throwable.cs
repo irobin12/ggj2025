@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Throwable : MonoBehaviour
 {
-    public string Name { get; private set; }
-    public int HealthPoints {get; private set;}
+    public string Name => throwableData.CuteName;
+    public int HealthPoints => throwableData.Health;
     public int AssignedWrap {get; private set;}
 
     [SerializeField] private Renderer wrap;
@@ -14,20 +14,21 @@ public class Throwable : MonoBehaviour
     private int turnImpulse;
     private bool moveLeft;
     private bool moveRight;
+    
+    private ThrowableData throwableData;
 
     private void Awake()
     {
         wrapMaterial = wrap.material;
     }
 
-    public void Initialise(int sidewaysMoveImpulse, string throwableName, int hp)
+    public void Initialise(int sidewaysMoveImpulse, ThrowableData data)
     {
         rigidBody = GetComponent<Rigidbody>();
         SetGravity(false);
         
         turnImpulse = sidewaysMoveImpulse;
-        Name = throwableName;
-        HealthPoints = hp;
+        throwableData = data;
     }
 
     public void SetAssignedWrap(int amount, int maxPotentialAmount, float maxWrapOpacity)
