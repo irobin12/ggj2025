@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1040287178	Game_Start_Music			\Default Work Unit\Game_Start_Music	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	667474730	bubble mmi	C:\Users\jason\Documents\GitHub\ggj2025\GGJ2025\GGJ2025_WwiseProject\.cache\27\{276D8278-A2F2-9CFC-80B9-407433AD4945}.wem		\Interactive Music Hierarchy\Default Work Unit\bubble mmi\bubble mmi		3386980
+

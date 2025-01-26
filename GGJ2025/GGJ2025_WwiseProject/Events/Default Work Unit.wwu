@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{A4B9EEFC-1657-4379-998B-278D6FC5585E}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{A4B9EEFC-1657-4379-998B-278D6FC5585E}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Game_Start_Music" ID="{76E16E3D-03DD-45B3-864E-230C5BCC95BD}">
+					<ChildrenList>
+						<Action Name="" ID="{4C5FB1A7-D38A-442F-955B-36AF38218334}" ShortID="621770075">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="bubble mmi" ID="{BE20838C-7751-455D-AC78-6B806763867A}" WorkUnitID="{D0C512D1-DBAF-4D41-A050-307FEE510D0D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

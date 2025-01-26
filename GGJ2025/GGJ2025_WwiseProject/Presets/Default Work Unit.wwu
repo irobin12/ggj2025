@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{A9688EA8-AF09-4D3A-A404-AE4A2ABC0CFC}" SchemaVersion="123">
+	<Presets>
+		<WorkUnit Name="Default Work Unit" ID="{A9688EA8-AF09-4D3A-A404-AE4A2ABC0CFC}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicSegment Name="bubble mmi" ID="{2BB52497-BD0E-4741-BACC-B20B8FE2C23E}">
+					<PropertyList>
+						<Property Name="EndPosition" Type="Real64" Value="19200.022675737"/>
+						<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D680A0B7-589E-42DB-A44E-CD233980C30B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{DD67C4D5-AE2B-41A3-B9A4-161BC6BEB5F5}"/>
+						</Reference>
+					</ReferenceList>
+					<ObjectLists>
+						<ObjectList Name="Cues">
+							<Reference>
+								<Local>
+									<MusicCue Name="Entry Cue" ID="{41F34957-0907-4D07-89BA-CB21F9AC0DC0}"/>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="Exit Cue" ID="{989D3B00-BA79-4836-89D5-112C7494BD0A}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="1"/>
+											<Property Name="TimeMs" Type="Real64" Value="19200.022675737"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+						</ObjectList>
+						<ObjectList Name="Stingers">
+							<Reference>
+								<Local>
+									<MusicStinger Name="" ID="{1A7B5240-BC68-4D16-BE75-34A9A343EF0F}">
+										<PropertyList>
+											<Property Name="NumSegmentAdvance" Type="int16" Value="0"/>
+											<Property Name="PlaySegmentAt" Type="int16" Value="6"/>
+										</PropertyList>
+									</MusicStinger>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</MusicSegment>
+			</ChildrenList>
+		</WorkUnit>
+	</Presets>
+</WwiseDocument>
