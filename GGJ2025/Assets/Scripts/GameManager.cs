@@ -25,9 +25,22 @@ public class GameManager : MonoBehaviour
     private void OnStartClicked(Throwable throwable)
     {
         throwableManager.Initialise(gameData, throwable);
+        throwableManager.ThrowableDamaged -= OnThrowableDamaged;
+        throwableManager.ThrowableDied -= OnThrowableDied;
+        throwableManager.ThrowableDamaged += OnThrowableDamaged;
+        throwableManager.ThrowableDied += OnThrowableDied;
         StartCoroutine(ChangeGameState(GameStatesManager.States.Launch));
     }
-    
+
+    private void OnThrowableDied(Throwable throwable)
+    {
+    }
+
+    private void OnThrowableDamaged(Throwable throwable)
+    {
+        uiManager.UpdateHUD(throwable);
+    }
+
     // Coroutine to avoid the click going through to the launch too early
     private IEnumerator ChangeGameState(GameStatesManager.States newState)
     {
@@ -56,7 +69,7 @@ public class GameManager : MonoBehaviour
                 throwableManager.Restart();
                 break;
             case GameStatesManager.States.Rolling:
-                uiManager.SetHUD(throwableManager.throwable.icon, throwableManager.throwable.MaxHealthPoints, throwableManager.throwable.AssignedWrap);
+                uiManager.SetHUD(throwableManager.CurrentThrowable.Icon, throwableManager.CurrentThrowable.MaxHealthPoints, throwableManager.CurrentThrowable.AssignedWrap);
                 break;
             case GameStatesManager.States.GameOver:
                 break;

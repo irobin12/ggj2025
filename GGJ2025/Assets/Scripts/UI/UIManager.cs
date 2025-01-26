@@ -91,4 +91,9 @@ public class UIManager : MonoBehaviour
     {
         rollingScreen.SetUp(sprite, maxHealth, maxWrap);
     }
+
+    public void UpdateHUD(Throwable throwable)
+    {
+        rollingScreen.ChangeValues(throwable.CurrentHealth, throwable.CurrentWrap);
+    }
 }

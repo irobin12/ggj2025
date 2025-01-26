@@ -17,4 +17,10 @@ public class RollingScreen : MonoBehaviour
         wrapBar.SetMinMaxValue(0, maxWrap);
         wrapBar.SetFill(maxWrap);
     }
+
+    public void ChangeValues(int health, int wrap)
+    {
+        healthBar.SetFill(health);
+        wrapBar.SetFill(wrap);
+    }
 }

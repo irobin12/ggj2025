@@ -1,11 +1,16 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Throwable : MonoBehaviour
 {
+    public Action TookDamage;
+    public Action Died;
+    
+    private const string ObstacleTag = "Obstacle";
     public string Name => throwableData.CuteName;
     public int MaxHealthPoints => throwableData.Health;
-    public Sprite icon => throwableData.Icon;
+    public Sprite Icon => throwableData.Icon;
     public int AssignedWrap {get; private set;}
 
     [SerializeField] private Renderer wrap;
@@ -18,23 +23,85 @@ public class Throwable : MonoBehaviour
     
     private ThrowableData throwableData;
 
+    private bool stayingInCollision;
+    private int currentCollisionsCount = 0;
+
+    public int CurrentHealth { get; private set; }
+    public int CurrentWrap {get; private set;}
+
     private void Awake()
     {
         wrapMaterial = wrap.material;
+        rigidBody = GetComponent<Rigidbody>();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag(ObstacleTag))
+        {
+            Debug.Log("Collision enter");
+            currentCollisionsCount++;
+
+            if (!stayingInCollision)
+            {
+                TakeDamage();
+            }
+
+            stayingInCollision = true;
+        }
+    }
+
+    private void TakeDamage()
+    {
+        if(CurrentHealth == 0) return;
+        
+        if (CurrentWrap == 0)
+        {
+            Debug.Log("Lose 1HP!");
+            CurrentHealth--;
+        }
+        else
+        {
+            Debug.Log("Lose 1 Wrap!");
+            CurrentWrap--;
+        }
+        
+        TookDamage?.Invoke();
+        
+        if (CurrentHealth == 0)
+        {
+            Debug.Log("You DIED");
+            Died?.Invoke();
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag(ObstacleTag))
+        {
+            currentCollisionsCount--;
+            if (currentCollisionsCount == 0)
+            {
+                stayingInCollision = false;
+            }
+        }
     }
 
     public void Initialise(int sidewaysMoveImpulse, ThrowableData data)
     {
-        rigidBody = GetComponent<Rigidbody>();
         SetGravity(false);
         
         turnImpulse = sidewaysMoveImpulse;
         throwableData = data;
+        
+        CurrentHealth = MaxHealthPoints;
+        CurrentWrap = AssignedWrap;
     }
 
     public void SetAssignedWrap(int amount, int maxPotentialAmount, float maxWrapOpacity)
     {
         AssignedWrap = amount;
+        CurrentWrap = amount;
         Color color = wrapMaterial.color;
         var lerpValue = Mathf.InverseLerp(0, maxPotentialAmount, AssignedWrap);
         color.a = Mathf.Lerp(0, maxWrapOpacity, lerpValue);

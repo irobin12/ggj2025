@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GameTest
   m_EditorClassIdentifier: 
   inputData: {fileID: 11400000, guid: a715c897ebb804d668128c7a0305b8c1, type: 2}
-  maxLaunchAngle: 45
+  maxLaunchAngle: 20
   minLaunchImpulse: 1
-  maxLaunchImpulse: 500
-  maxImpulseHeldDownTime: 6
+  maxLaunchImpulse: 300
+  maxImpulseHeldDownTime: 3
   sidewaysMoveImpulse: 5
   bubbleWrapAmount: 5
   throwables:

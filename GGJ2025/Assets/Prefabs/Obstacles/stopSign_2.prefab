@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stopSign_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab012d0f8577be842a317e4f1fcedfd6, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,14 +1,18 @@
+using System;
 using UnityEngine;
 
 public class ThrowableManager : MonoBehaviour
 {
+    public Action<Throwable> ThrowableDamaged;
+    public Action<Throwable> ThrowableDied;
+    
     [SerializeField] private Camera followerCamera;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject launcherVisual;
     [SerializeField] private Color minImpulseColor = Color.yellow;
     [SerializeField] private Color maxImpulseColor = Color.red;
     
-    public Throwable throwable { get; private set; }
+    public Throwable CurrentThrowable { get; private set; }
     
     private Vector3 cameraInitialPosition;
     private Quaternion cameraInitialRotation;
@@ -26,14 +30,17 @@ public class ThrowableManager : MonoBehaviour
 
     public void Initialise(GameData data, Throwable selectedThrowable)
     {
-        throwable = selectedThrowable;
+        CurrentThrowable = selectedThrowable;
+        CurrentThrowable.TookDamage -= OnThrowableDamaged;
+        CurrentThrowable.Died -= OnThrowableDied;
+        CurrentThrowable.TookDamage += OnThrowableDamaged;
+        CurrentThrowable.Died += OnThrowableDied;
         
         cameraInitialPosition = followerCamera.transform.position;
         cameraInitialRotation = followerCamera.transform.rotation;
         
-        throwable.transform.position = spawnPoint.position;
-        throwable.transform.rotation = spawnPoint.rotation;
-        // throwable.Initialise(data);
+        CurrentThrowable.transform.position = spawnPoint.position;
+        CurrentThrowable.transform.rotation = spawnPoint.rotation;
 
         cameraDeltaPositionFromThrowable = spawnPoint.position - cameraInitialPosition;
         
@@ -49,10 +56,21 @@ public class ThrowableManager : MonoBehaviour
         ShowLauncherVisuals(true);
     }
 
+    private void OnThrowableDied()
+    {
+        ThrowableDied?.Invoke(CurrentThrowable);
+    }
+
+    private void OnThrowableDamaged()
+    {
+        // Update UI 
+        ThrowableDamaged?.Invoke(CurrentThrowable);
+    }
+
     public void ShowThrower(bool show)
     {
         launcherVisual.SetActive(show);
-        if(throwable) throwable.gameObject.SetActive(show);
+        if(CurrentThrowable) CurrentThrowable.gameObject.SetActive(show);
     }
     
     private void SetStartingValues()
@@ -71,7 +89,7 @@ public class ThrowableManager : MonoBehaviour
         
         SetStartingValues();
 
-        throwable.Restart(spawnPoint.position, spawnPoint.rotation);
+        CurrentThrowable.Restart(spawnPoint.position, spawnPoint.rotation);
         ShowLauncherVisuals(true);
         // GameStatesManager.CurrentGameState = GameStatesManager.States.Launch;
     }
@@ -100,7 +118,7 @@ public class ThrowableManager : MonoBehaviour
 
     private void LaunchThrowable()
     {
-        throwable.Launch(launchImpulse);
+        CurrentThrowable.Launch(launchImpulse);
         ShowLauncherVisuals(false);
         GameStatesManager.SetGameState(GameStatesManager.States.Rolling);
     }
@@ -110,7 +128,7 @@ public class ThrowableManager : MonoBehaviour
         var mousePosition = Input.mousePosition;
         var newAngle = Mathf.LerpAngle(minLaunchAngle, maxLaunchAngle, mousePosition.x / Screen.width);
         launcherVisual.transform.rotation = Quaternion.Euler(launcherVisual.transform.rotation.eulerAngles.x, newAngle, 0);
-        throwable.transform.rotation = Quaternion.Euler(throwable.transform.rotation.eulerAngles.x, newAngle, throwable.transform.rotation.eulerAngles.z);
+        CurrentThrowable.transform.rotation = Quaternion.Euler(CurrentThrowable.transform.rotation.eulerAngles.x, newAngle, CurrentThrowable.transform.rotation.eulerAngles.z);
     }
 
     private void FixedUpdate()
@@ -124,7 +142,7 @@ public class ThrowableManager : MonoBehaviour
     private void UpdateCameraTransformFromThrowable()
     {
         // x should stay fixed (width), z is length.depth, y is height
-        followerCamera.transform.position = new Vector3(followerCamera.transform.position.x, throwable.transform.position.y - cameraDeltaPositionFromThrowable.y, throwable.transform.position.z - cameraDeltaPositionFromThrowable.z);
+        followerCamera.transform.position = new Vector3(followerCamera.transform.position.x, CurrentThrowable.transform.position.y - cameraDeltaPositionFromThrowable.y, CurrentThrowable.transform.position.z - cameraDeltaPositionFromThrowable.z);
     }
 
     private void ShowLauncherVisuals(bool show)
