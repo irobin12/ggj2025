@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         PrepareLauncher(throwableQueue.Dequeue());
     }
 
-    private void PrepareLauncher(Throwable throwable, int secondsToWait = 0)
+    private void PrepareLauncher(Throwable throwable)
     {
         throwableManager.Initialise(gameData, throwable);
         
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ChangeGameState(GameStatesManager.States.Launch));
     }
 
-    private IEnumerator RestartLauncherOnFinished(Throwable throwable, int secondsToWait = 0)
+    private IEnumerator RestartLauncherOnFinished(Throwable throwable, float secondsToWait = 0)
     {
         yield return new WaitForSeconds(secondsToWait);
         
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
         if (throwableQueue.Count > 0)
         {
-            StartCoroutine(RestartLauncherOnFinished(throwableQueue.Dequeue(), 2));
+            StartCoroutine(RestartLauncherOnFinished(throwableQueue.Dequeue(), 1.2f));
         }
         else
         {
