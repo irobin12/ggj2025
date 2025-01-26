@@ -54,6 +54,12 @@ public class ThrowableManager : MonoBehaviour
         ShowLauncherVisuals(true);
     }
 
+    public void ShowThrower(bool show)
+    {
+        launcherVisual.SetActive(show);
+        throwable.gameObject.SetActive(show);
+    }
+    
     private void SetStartingValues()
     {
         launchImpulse = minLaunchImpulse;
