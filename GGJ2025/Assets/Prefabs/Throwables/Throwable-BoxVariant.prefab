@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 525570600274228700, guid: 1898e3f3c364c4ee0a255b2180cd1acb, type: 3}
+      propertyPath: wrap
+      value: 
+      objectReference: {fileID: 9183190341643368175}
     - target: {fileID: 2385109890406518681, guid: 1898e3f3c364c4ee0a255b2180cd1acb, type: 3}
       propertyPath: m_Name
       value: Throwable-BoxVariant
@@ -131,5 +135,10 @@ PrefabInstance:
 --- !u!4 &4474660682135209977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1565482778578577509, guid: 1a6745567e320794cb0c0ae769126e01, type: 3}
+  m_PrefabInstance: {fileID: 3143660304869191580}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9183190341643368175 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6111869107534698867, guid: 1a6745567e320794cb0c0ae769126e01, type: 3}
   m_PrefabInstance: {fileID: 3143660304869191580}
   m_PrefabAsset: {fileID: 0}

@@ -62,6 +62,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1587979539313759253, guid: ddc47b87d9d67b145a4ee31dfc860545, type: 3}
   m_PrefabInstance: {fileID: 117528496864471487}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &6745264393333381014 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6645753606466027049, guid: ddc47b87d9d67b145a4ee31dfc860545, type: 3}
+  m_PrefabInstance: {fileID: 117528496864471487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3063474266853457799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,6 +75,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 525570600274228700, guid: 1898e3f3c364c4ee0a255b2180cd1acb, type: 3}
+      propertyPath: wrap
+      value: 
+      objectReference: {fileID: 6745264393333381014}
     - target: {fileID: 2385109890406518681, guid: 1898e3f3c364c4ee0a255b2180cd1acb, type: 3}
       propertyPath: m_Name
       value: Throwable-CactusVariant
