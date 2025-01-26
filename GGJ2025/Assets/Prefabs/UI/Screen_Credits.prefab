@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -140}
-  m_SizeDelta: {x: 0, y: -280}
+  m_AnchoredPosition: {x: -40, y: -64}
+  m_SizeDelta: {x: -160, y: -256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7634891895067161739
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
     m_Top: 24
     m_Bottom: 24
   m_ChildAlignment: 1
-  m_Spacing: 70
+  m_Spacing: 48
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -176,10 +176,10 @@ RectTransform:
   - {fileID: 5267700548596529154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -480, y: -320}
+  m_SizeDelta: {x: 1200, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3282803480283687376
 MonoBehaviour:
@@ -230,8 +230,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -140}
-  m_SizeDelta: {x: 0, y: -280}
+  m_AnchoredPosition: {x: 40, y: -64}
+  m_SizeDelta: {x: -160, y: -256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8754966533991825069
 MonoBehaviour:
@@ -251,7 +251,7 @@ MonoBehaviour:
     m_Top: 24
     m_Bottom: 24
   m_ChildAlignment: 1
-  m_Spacing: 70
+  m_Spacing: 48
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -349,6 +349,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5959314967297497809, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
+      propertyPath: m_text
+      value: "<u>In\xE8s Robin</u>\nProgrammer/UX"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
+      propertyPath: m_fontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
+      propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -703,7 +715,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
       propertyPath: m_text
-      value: Jesse Emutelu - Designer
+      value: <u>Jesse Emutelu</u><br>Game Designer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
+      propertyPath: m_fontSize
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -809,7 +825,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
       propertyPath: m_text
-      value: "Nicol\xF2 Azzolini -  3D Artist"
+      value: "<u>Nicol\xF2 Azzolini</u><br> 3D/Game Artist"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
+      propertyPath: m_fontSize
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -915,7 +935,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
       propertyPath: m_text
-      value: Elizabeth Turner - Concept Art/UI
+      value: <u>Elizabeth Turner</u><br>Concept Art/UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
+      propertyPath: m_fontSize
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -965,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3563958170166145605, guid: 32aee299ac6284a92b8bd5a32bd49992, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3563958170166145605, guid: 32aee299ac6284a92b8bd5a32bd49992, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1151,7 +1175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
       propertyPath: m_text
-      value: Taliyah Anglim - 3D Artist
+      value: <u>Taliyah Anglim</u><br>3D Artist
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
+      propertyPath: m_fontSize
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1257,7 +1285,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
       propertyPath: m_text
-      value: JaceSound - Music
+      value: <u>JaceSound</u><br> Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865596674792460518, guid: 60e298f49c47a439da701e4ea4b119be, type: 3}
+      propertyPath: m_fontSize
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -127,6 +127,8 @@ public class Throwable : MonoBehaviour
 
     private void CheckMovementInput()
     {
+        if(GameStatesManager.CurrentGameState != GameStatesManager.States.Rolling) return;
+        
         if (Inputs.IsKeyDown(Inputs.MoveLeft))
         {
             moveLeft = true;

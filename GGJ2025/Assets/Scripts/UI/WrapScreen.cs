@@ -18,14 +18,16 @@ public class WrapScreen : MonoBehaviour
     [SerializeField] private Button upButton;
     [SerializeField] private Button downButton;
     [SerializeField] private Button startButton;
+    private bool canAddWrap;
+    private bool hasMinimumWrap;
 
     public void Set(string throwableName, int hp, int assigned, int remaining)
     {
         SetTexts(throwableName, hp, assigned, remaining);
 
-        bool hasWrapRemaining = remaining > 0;
-        bool hasWrapAssigned = assigned > WrapManager.MinWrapAmount;
-        SetButtons(hasWrapRemaining, hasWrapAssigned, !hasWrapRemaining);
+        canAddWrap = remaining > 0;
+        hasMinimumWrap = assigned > WrapManager.MinWrapAmount;
+        SetButtons();
     }
 
     private void Update()
@@ -40,12 +42,12 @@ public class WrapScreen : MonoBehaviour
             HandleRightClicked();
         }
 
-        if (Inputs.IsKeyUp(Inputs.Up))
+        if (canAddWrap && Inputs.IsKeyUp(Inputs.Up))
         {
             HandleUpClicked();
         }
 
-        if (Inputs.IsKeyUp(Inputs.Down))
+        if (hasMinimumWrap && Inputs.IsKeyUp(Inputs.Down))
         {
             HandleDownClicked();
         }
@@ -59,12 +61,12 @@ public class WrapScreen : MonoBehaviour
         wrapRemainingText.text = $"Total wrap remaining: {remaining}";
     }
 
-    private void SetButtons(bool up, bool down, bool start)
+    private void SetButtons()
     {
-        upButton.interactable = up;
-        downButton.interactable = down;
-        startButton.interactable = start;
-        assignAllText.gameObject.SetActive(!start);
+        upButton.interactable = canAddWrap;
+        downButton.interactable = hasMinimumWrap;
+        startButton.interactable = !canAddWrap;
+        assignAllText.gameObject.SetActive(canAddWrap);
     }
 
     public void HandleLeftClicked()
