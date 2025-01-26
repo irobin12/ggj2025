@@ -12,6 +12,18 @@ public class StartScreen : MonoBehaviour
     private string[] levelNames;
     private int level;
 
+    private void Update()
+    {
+        if (Inputs.IsKeyDown(Inputs.MoveLeft))
+        {
+            HandleLeftLevelClicked();
+        }
+        else if (Inputs.IsKeyDown(Inputs.MoveRight))
+        {
+            HandleRightLevelClicked();
+        }
+    }
+
     private void Start()
     {
         SetLevelsText(LevelsManager.currentLevelName);
