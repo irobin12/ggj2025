@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Throwable-ToasterVariant
       objectReference: {fileID: 0}
+    - target: {fileID: 2956240810966362335, guid: 1898e3f3c364c4ee0a255b2180cd1acb, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 4c60cd356372ee34b8317d7dc0af1ca4, type: 2}
     - target: {fileID: 3262110637216729133, guid: 1898e3f3c364c4ee0a255b2180cd1acb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.035873

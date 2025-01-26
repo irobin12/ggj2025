@@ -11,4 +11,7 @@ public class InputData : ScriptableObject
 
     [SerializeField] private KeyCode[] restart;
     public KeyCode[] Restart => restart;
+    
+    [SerializeField] private KeyCode[] menu;
+    public KeyCode[] Menu => menu;
 }

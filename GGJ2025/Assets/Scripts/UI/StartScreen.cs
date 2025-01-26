@@ -29,6 +29,11 @@ public class StartScreen : MonoBehaviour
         SetLevelsText(LevelsManager.currentLevelName);
     }
 
+    public void HandleCreditsClicked()
+    {
+        GameStatesManager.SetGameState(GameStatesManager.States.Credits);
+    }
+
     public void HandleWrapClicked()
     {
         WrapClicked?.Invoke();

@@ -2,15 +2,17 @@ using UnityEngine;
 
 public static class Inputs
 {
-    public static KeyCode[] moveLeft;
-    public static KeyCode[] moveRight;
-    public static KeyCode[] restart;
+    public static KeyCode[] MoveLeft { get; private set; }
+    public static KeyCode[] MoveRight{ get; private set; }
+    public static KeyCode[] Restart{ get; private set; }
+    public static KeyCode[] Menu{ get; private set; }
 
     public static void Set(InputData inputData)
     {
-        moveLeft = inputData.MoveLeft;
-        moveRight = inputData.MoveRight;
-        restart = inputData.Restart;
+        MoveLeft = inputData.MoveLeft;
+        MoveRight = inputData.MoveRight;
+        Restart = inputData.Restart;
+        Menu = inputData.Menu;
     }
 
     public static bool IsKeyUp(KeyCode[] keys)
