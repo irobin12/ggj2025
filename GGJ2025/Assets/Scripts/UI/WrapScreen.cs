@@ -28,6 +28,29 @@ public class WrapScreen : MonoBehaviour
         SetButtons(hasWrapRemaining, hasWrapAssigned, !hasWrapRemaining);
     }
 
+    private void Update()
+    {
+        if (Inputs.IsKeyUp(Inputs.MoveLeft))
+        {
+            HandleLeftClicked();
+        }
+
+        if (Inputs.IsKeyUp(Inputs.MoveRight))
+        {
+            HandleRightClicked();
+        }
+
+        if (Inputs.IsKeyUp(Inputs.Up))
+        {
+            HandleUpClicked();
+        }
+
+        if (Inputs.IsKeyUp(Inputs.Down))
+        {
+            HandleDownClicked();
+        }
+    }
+
     private void SetTexts(string throwableName, int hp, int assigned, int remaining)
     {
         nameText.text = throwableName;

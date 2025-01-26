@@ -4,6 +4,8 @@ public static class Inputs
 {
     public static KeyCode[] MoveLeft { get; private set; }
     public static KeyCode[] MoveRight{ get; private set; }
+    public static KeyCode[] Up { get; private set; }
+    public static KeyCode[] Down { get; private set; }
     public static KeyCode[] Restart{ get; private set; }
     public static KeyCode[] Menu{ get; private set; }
 
@@ -11,6 +13,8 @@ public static class Inputs
     {
         MoveLeft = inputData.MoveLeft;
         MoveRight = inputData.MoveRight;
+        Up = inputData.Up;
+        Down = inputData.Down;
         Restart = inputData.Restart;
         Menu = inputData.Menu;
     }

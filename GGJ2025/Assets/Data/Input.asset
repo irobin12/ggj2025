@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6856567d72d4a6eb9da40b120f9daf9, type: 3}
   m_Name: Input
   m_EditorClassIdentifier: 
-  moveLeft: 14010000
-  moveRight: 13010000
+  moveLeft: 1401000061000000
+  moveRight: 1301000064000000
+  up: 1101000077000000
+  down: 1201000073000000
   restart: 72000000
   menu: 6d000000
