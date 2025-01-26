@@ -8,10 +8,10 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI saveText;
     [SerializeField] private Button menuButton;
 
-    public void SetTexts(int score, int save)
+    public void SetTexts(int score, int save, int maxSaves)
     {
         scoreText.text = $"Final score: {score}";
-        saveText.text = $"You saved: {save}";
+        saveText.text = $"You saved: {save}/{maxSaves}";
     }
     
     public void HandleMenuButton()

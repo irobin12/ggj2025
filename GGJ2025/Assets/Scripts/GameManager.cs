@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static Queue<Throwable> throwableQueue;
     private const int DefaultLevelIndex = 0;
+
     [SerializeField] private GameData gameData;
     [SerializeField] private ThrowableManager throwableManager;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private WrapManager wrapManager;
+    private int MaxThrowables => gameData.Throwables.Length;
     private bool firstRun = true;
     private int saveCount = 0;
     private int finalScore = 0;
@@ -87,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     private void OnThrowableDamaged(Throwable throwable)
     {
-        uiManager.UpdateHUD(throwable, finalScore);
+        uiManager.UpdateHUD(throwable, finalScore, saveCount, MaxThrowables);
     }
 
     // Coroutine to avoid the click going through to the launch too early
@@ -116,14 +118,14 @@ public class GameManager : MonoBehaviour
                 firstRun = false;
                 throwableManager.ShowThrower(true);
                 throwableManager.Restart();
-                uiManager.SetLaunchUI(finalScore);
+                uiManager.SetLaunchUI(finalScore, saveCount, MaxThrowables);
                 break;
             case GameStatesManager.States.Rolling:
                 uiManager.SetHUD(throwableManager.CurrentThrowable.Icon, throwableManager.CurrentThrowable.MaxHealthPoints, throwableManager.CurrentThrowable.AssignedWrap);
-                uiManager.UpdateHUD(throwableManager.CurrentThrowable, finalScore);
+                uiManager.UpdateHUD(throwableManager.CurrentThrowable, finalScore, saveCount, MaxThrowables);
                 break;
             case GameStatesManager.States.GameOver:
-                uiManager.SetGameOver(saveCount, finalScore);
+                uiManager.SetGameOver(saveCount, finalScore, MaxThrowables);
                 finalScore = 0;
                 saveCount = 0;
                 break;

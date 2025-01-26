@@ -92,19 +92,19 @@ public class UIManager : MonoBehaviour
         rollingScreen.SetUp(sprite, maxHealth, maxWrap);
     }
 
-    public void UpdateHUD(Throwable throwable, int totalScore)
+    public void UpdateHUD(Throwable throwable, int totalScore, int savedCount, int savedMax)
     {
         rollingScreen.ChangeValues(throwable.CurrentHealth, throwable.CurrentWrap);
-        rollingScreen.SetTotalScore(totalScore);
+        rollingScreen.SetTotalScore(totalScore, savedCount, savedMax);
     }
 
-    public void SetGameOver(int saveCount, int finalScore)
+    public void SetGameOver(int saveCount, int finalScore, int maxSaves)
     {
-        gameOverScreen.SetTexts(finalScore, saveCount);
+        gameOverScreen.SetTexts(finalScore, saveCount, maxSaves);
     }
 
-    public void SetLaunchUI(int score)
+    public void SetLaunchUI(int score, int savedCount, int savedMax)
     {
-        launchScreen.SetTotalScore(score);
+        launchScreen.SetTotalScore(score, savedCount, savedMax);
     }
 }

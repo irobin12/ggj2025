@@ -26,8 +26,8 @@ public class RollingScreen : MonoBehaviour
         wrapBar.SetFill(wrap);
     }
 
-    public void SetTotalScore(int totalScore)
+    public void SetTotalScore(int totalScore, int savedCount, int savedMax)
     {
-        scoreUI.SetTotalScore(totalScore);
+        scoreUI.SetTotalScore(totalScore, savedCount, savedMax);
     }
 }
