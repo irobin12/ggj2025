@@ -8,4 +8,10 @@ public class ThrowableData : ScriptableObject
     
     [SerializeField] private Throwable prefab;
     public Throwable Prefab => prefab;
+    
+    [SerializeField] private string name;
+    public string Name => name;
+    
+    [SerializeField] private string description;
+    public string Description => description;
 }

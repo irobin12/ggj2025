@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
         Inputs.Set(gameData.InputData);
         LevelsManager.SetUp(gameData.LevelNames);
         LevelsManager.LoadLevelAdditive(DefaultLevelIndex);
+        GameStatesManager.SetGameState(GameStatesManager.States.StartMenu);
     }
     
     void Update()
