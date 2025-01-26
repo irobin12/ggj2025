@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        GameStatesManager.StateChanged += OnStateChanged;
+        GameStatesManager.stateChanged += OnStateChanged;
         startScreen.WrapClicked += OnWrapClicked;
     }
 
@@ -77,20 +77,13 @@ public class UIManager : MonoBehaviour
     private void OnWrapClicked()
     {
         startScreen.gameObject.SetActive(false);
-        StartCoroutine(ChangeGameState());
-    }
-
-    // Coroutine to avoid the click going through to the launch too early
-    private IEnumerator ChangeGameState()
-    {
-        yield return null;
-        // GameStatesManager.SetGameState(GameStatesManager.States.Launch);
         GameStatesManager.SetGameState(GameStatesManager.States.Wrap);
     }
+
 
     private void OnDestroy()
     {
         startScreen.WrapClicked -= OnWrapClicked;
-        GameStatesManager.StateChanged -= OnStateChanged;
+        GameStatesManager.stateChanged -= OnStateChanged;
     }
 }

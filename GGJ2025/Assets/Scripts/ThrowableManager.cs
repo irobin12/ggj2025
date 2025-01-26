@@ -10,9 +10,6 @@ public class ThrowableManager : MonoBehaviour
     
     private Throwable throwable;
     
-    private Vector3 initialPosition;
-    private Quaternion initialRotation;
-    
     private Vector3 cameraInitialPosition;
     private Quaternion cameraInitialRotation;
     private Vector3 cameraDeltaPositionFromThrowable;
@@ -30,9 +27,6 @@ public class ThrowableManager : MonoBehaviour
     public void Initialise(GameData data, Throwable selectedThrowable)
     {
         throwable = selectedThrowable;
-        
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
         
         cameraInitialPosition = followerCamera.transform.position;
         cameraInitialRotation = followerCamera.transform.rotation;
@@ -71,8 +65,6 @@ public class ThrowableManager : MonoBehaviour
     public void Restart()
     {
         StopAllCoroutines();
-        transform.position = initialPosition;
-        transform.rotation = initialRotation;
         
         followerCamera.transform.position = cameraInitialPosition;
         followerCamera.transform.rotation = cameraInitialRotation;
@@ -81,7 +73,7 @@ public class ThrowableManager : MonoBehaviour
 
         throwable.Restart(spawnPoint.position, spawnPoint.rotation);
         ShowLauncherVisuals(true);
-        GameStatesManager.currentGameState = GameStatesManager.States.Launch;
+        // GameStatesManager.CurrentGameState = GameStatesManager.States.Launch;
     }
 
     public void UpdateLaunch()
@@ -123,7 +115,7 @@ public class ThrowableManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameStatesManager.currentGameState == GameStatesManager.States.Rolling)
+        if (GameStatesManager.CurrentGameState == GameStatesManager.States.Rolling)
         {
             UpdateCameraTransformFromThrowable();
         }

@@ -2,7 +2,7 @@ using System;
 
 public static class GameStatesManager
 {
-    public static Action<States> StateChanged;
+    public static Action<States> stateChanged;
     
     public enum States
     {
@@ -14,12 +14,12 @@ public static class GameStatesManager
         GameOver
     }
     
-    public static States currentGameState = States.StartMenu;
+    public static States CurrentGameState {get; private set;}
 
     public static void SetGameState(States gameState)
     {
-        currentGameState = gameState;
-        StateChanged?.Invoke(gameState);
+        CurrentGameState = gameState;
+        stateChanged?.Invoke(gameState);
     }
 
 }

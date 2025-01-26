@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ThrowableManager throwableManager;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private WrapManager wrapManager;
+    private bool firstRun = true;
     
     private void Awake()
     {
@@ -15,7 +17,7 @@ public class GameManager : MonoBehaviour
         Inputs.Set(gameData.InputData);
         LevelsManager.SetUp(gameData.LevelNames);
         LevelsManager.LoadLevelAdditive(DefaultLevelIndex);
-        GameStatesManager.StateChanged += OnStateChanged;
+        GameStatesManager.stateChanged += OnStateChanged;
         GameStatesManager.SetGameState(GameStatesManager.States.StartMenu);
         wrapManager.StartClicked += OnStartClicked;
     }
@@ -23,7 +25,14 @@ public class GameManager : MonoBehaviour
     private void OnStartClicked(Throwable throwable)
     {
         throwableManager.Initialise(gameData, throwable);
-        GameStatesManager.SetGameState(GameStatesManager.States.Launch);
+        StartCoroutine(ChangeGameState(GameStatesManager.States.Launch));
+    }
+    
+    // Coroutine to avoid the click going through to the launch too early
+    private IEnumerator ChangeGameState(GameStatesManager.States newState)
+    {
+        yield return null;
+        GameStatesManager.SetGameState(newState);
     }
 
     private void OnStateChanged(GameStatesManager.States state)
@@ -31,6 +40,7 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameStatesManager.States.StartMenu:
+                if(!firstRun) throwableManager.Restart();
                 throwableManager.ShowThrower(false);
                 wrapManager.gameObject.SetActive(false);
                 break;
@@ -41,6 +51,7 @@ public class GameManager : MonoBehaviour
                 wrapManager.Initialise(gameData);
                 break;
             case GameStatesManager.States.Launch:
+                firstRun = false;
                 throwableManager.ShowThrower(true);
                 throwableManager.Restart();
                 break;
@@ -53,12 +64,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Inputs.IsKeyUp(Inputs.Menu) && GameStatesManager.currentGameState != GameStatesManager.States.StartMenu)
+        if (Inputs.IsKeyUp(Inputs.Menu) && GameStatesManager.CurrentGameState != GameStatesManager.States.StartMenu)
         {
             GameStatesManager.SetGameState(GameStatesManager.States.StartMenu);
         }
         
-        switch (GameStatesManager.currentGameState)
+        switch (GameStatesManager.CurrentGameState)
         {
             case GameStatesManager.States.Launch:
             {
@@ -86,7 +97,7 @@ public class GameManager : MonoBehaviour
     {
         if (Inputs.IsKeyUp(Inputs.Restart))
         {
-            throwableManager.Restart();
+            GameStatesManager.SetGameState(GameStatesManager.States.Launch);
         }
     }
 }
