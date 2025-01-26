@@ -51,10 +51,10 @@ PrefabInstance:
     - target: {fileID: -7096407162487493378, guid: ef8c10acf0fc30b4981bcd1dbe501466, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -876546973899608171, guid: e3dacbef22d4e214b820141aa48ec1fd, type: 3}
+      objectReference: {fileID: 2100000, guid: 90d3e684c16566248aa884b175c0e56c, type: 2}
     - target: {fileID: 919132149155446097, guid: ef8c10acf0fc30b4981bcd1dbe501466, type: 3}
       propertyPath: m_Name
-      value: Throwable_TV
+      value: TV
       objectReference: {fileID: 0}
     - target: {fileID: 3705348015260377707, guid: ef8c10acf0fc30b4981bcd1dbe501466, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

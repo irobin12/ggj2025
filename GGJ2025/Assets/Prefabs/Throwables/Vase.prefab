@@ -59,10 +59,10 @@ PrefabInstance:
     - target: {fileID: 77451661995471114, guid: d52bd14e06934d442a96f4ab8a2b7473, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -876546973899608171, guid: e3dacbef22d4e214b820141aa48ec1fd, type: 3}
+      objectReference: {fileID: 2100000, guid: 90d3e684c16566248aa884b175c0e56c, type: 2}
     - target: {fileID: 919132149155446097, guid: d52bd14e06934d442a96f4ab8a2b7473, type: 3}
       propertyPath: m_Name
-      value: Throwable_Vase
+      value: Vase
       objectReference: {fileID: 0}
     - target: {fileID: 6495919904011416210, guid: d52bd14e06934d442a96f4ab8a2b7473, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

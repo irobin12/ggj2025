@@ -94,12 +94,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4d46dfff2d017774e8358a852d7aed2e, type: 3}
       propertyPath: m_Name
-      value: Throwable_Cactus
+      value: Cactus
       objectReference: {fileID: 0}
     - target: {fileID: 2570099592403753022, guid: 4d46dfff2d017774e8358a852d7aed2e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -876546973899608171, guid: e3dacbef22d4e214b820141aa48ec1fd, type: 3}
+      objectReference: {fileID: 2100000, guid: 90d3e684c16566248aa884b175c0e56c, type: 2}
     - target: {fileID: 7618082988558975733, guid: 4d46dfff2d017774e8358a852d7aed2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
