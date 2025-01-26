@@ -26,9 +26,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf51dd9d24b674959898066dd5068b11, type: 2}
   - {fileID: 11400000, guid: a86670ba4740d4bf2be983ee2ef2f90c, type: 2}
   levelNames:
-  - EasyLevel1
-  - EasyLevel2
-  - NormalLevel1
-  - NormalLevel2
-  - HardLevel1
-  - HardLevel2
+  - Gentle Tumble
+  - Messy Road
+  - Tricky Rolls
+  - Greenward Avenue
+  - Urban Displacement
+  - Sunset Hills
