@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2414ea24d3b42658c9eeebfac747753, type: 3}
-  m_Name: Sphere
+  m_Name: Box
   m_EditorClassIdentifier: 
   health: 3
-  prefab: {fileID: 525570600274228700, guid: 1898e3f3c364c4ee0a255b2180cd1acb, type: 3}
-  name: Sphere
+  prefab: {fileID: 3299051862029912667, guid: a041bc3f74e0984409938287b344de16, type: 3}
+  name: Boxy
   description: 

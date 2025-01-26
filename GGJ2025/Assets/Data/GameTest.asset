@@ -20,7 +20,11 @@ MonoBehaviour:
   sidewaysMoveImpulse: 5
   bubbleWrapAmount: 20
   throwables:
-  - {fileID: 11400000, guid: 19290baf3421246c3966fb37e2eb7db0, type: 2}
+  - {fileID: 11400000, guid: 747847181c45e4cd3b9c67b91c91a0d9, type: 2}
+  - {fileID: 11400000, guid: be4fd8fb1bc5d424b8089fbbe83185b9, type: 2}
+  - {fileID: 11400000, guid: cc9f4cc9775b64097af4b5a7b0150066, type: 2}
+  - {fileID: 11400000, guid: cf51dd9d24b674959898066dd5068b11, type: 2}
+  - {fileID: 11400000, guid: a86670ba4740d4bf2be983ee2ef2f90c, type: 2}
   levelNames:
   - EasyLevel1
   - HardLevel2
