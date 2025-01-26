@@ -8,7 +8,7 @@ public class ThrowableManager : MonoBehaviour
     [SerializeField] private Color minImpulseColor = Color.yellow;
     [SerializeField] private Color maxImpulseColor = Color.red;
     
-    private Throwable throwable;
+    public Throwable throwable { get; private set; }
     
     private Vector3 cameraInitialPosition;
     private Quaternion cameraInitialRotation;

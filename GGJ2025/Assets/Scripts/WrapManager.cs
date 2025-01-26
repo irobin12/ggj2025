@@ -66,7 +66,7 @@ public class WrapManager : MonoBehaviour
 
     private void SetUI()
     {
-        wrapScreen.Set(currentThrowable.Name, currentThrowable.HealthPoints, currentThrowable.AssignedWrap, RemainingWrap );
+        wrapScreen.Set(currentThrowable.Name, currentThrowable.MaxHealthPoints, currentThrowable.AssignedWrap, RemainingWrap );
     }
 
     private void OnSelectionChanged(int delta)

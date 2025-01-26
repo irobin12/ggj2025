@@ -4,7 +4,8 @@ using UnityEngine;
 public class Throwable : MonoBehaviour
 {
     public string Name => throwableData.CuteName;
-    public int HealthPoints => throwableData.Health;
+    public int MaxHealthPoints => throwableData.Health;
+    public Sprite icon => throwableData.Icon;
     public int AssignedWrap {get; private set;}
 
     [SerializeField] private Renderer wrap;

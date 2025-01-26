@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
                 throwableManager.Restart();
                 break;
             case GameStatesManager.States.Rolling:
+                uiManager.SetHUD(throwableManager.throwable.icon, throwableManager.throwable.MaxHealthPoints, throwableManager.throwable.AssignedWrap);
                 break;
             case GameStatesManager.States.GameOver:
                 break;

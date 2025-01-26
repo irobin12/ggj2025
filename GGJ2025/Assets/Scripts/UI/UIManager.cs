@@ -86,4 +86,9 @@ public class UIManager : MonoBehaviour
         startScreen.WrapClicked -= OnWrapClicked;
         GameStatesManager.stateChanged -= OnStateChanged;
     }
+
+    public void SetHUD(Sprite sprite, int maxHealth, int maxWrap)
+    {
+        rollingScreen.SetUp(sprite, maxHealth, maxWrap);
+    }
 }
