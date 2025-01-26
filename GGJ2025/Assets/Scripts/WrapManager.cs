@@ -13,10 +13,10 @@ public class WrapManager : MonoBehaviour
         wrapScreen.StartClicked += OnStartClicked;
         ThrowableData[] throwablesData = gameData.Throwables;
         throwables = new Throwable[throwablesData.Length];
-            
-        var children = GetComponentsInChildren<Throwable>();
-        foreach (var child in children)
+
+        for (int i = transform.childCount - 1; i >= 0; i--)
         {
+            var child = transform.GetChild(i);
             Destroy(child.gameObject);
         }
 
