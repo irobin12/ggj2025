@@ -7,10 +7,14 @@ public class WrapManager : MonoBehaviour
     [SerializeField] private WrapScreen wrapScreen;
     private Throwable[] throwables;
     private Throwable currentThrowable;
+    private int currentThrowableIndex;
     
     public void Initialise(GameData gameData)
     {
+        wrapScreen.SelectionChanged += OnSelectionChanged;
+        wrapScreen.AmountChanged += OnAmountChanged;
         wrapScreen.StartClicked += OnStartClicked;
+        
         ThrowableData[] throwablesData = gameData.Throwables;
         throwables = new Throwable[throwablesData.Length];
 
@@ -34,8 +38,23 @@ public class WrapManager : MonoBehaviour
 
     private void SelectThrowable(int index)
     {
+        if(index < 0) index = throwables.Length - 1;
+        else if (index >= throwables.Length) index = 0;
+        
+        if(currentThrowable) currentThrowable.gameObject.SetActive(false);
+        currentThrowableIndex = index;
         currentThrowable = throwables[index];   
         currentThrowable.gameObject.SetActive(true);
+    }
+    
+    private void OnSelectionChanged(int delta)
+    {
+        SelectThrowable(currentThrowableIndex + delta);
+    }
+    
+    private void OnAmountChanged(int delta)
+    {
+        
     }
     
     private void OnStartClicked()
