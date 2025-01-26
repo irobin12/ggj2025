@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2414ea24d3b42658c9eeebfac747753, type: 3}
   m_Name: Vase
   m_EditorClassIdentifier: 
-  health: 3
+  health: 1
   prefab: {fileID: 3299051862029912667, guid: 39a794911e431774083a3f221594173b, type: 3}
   cuteName: Swanky
   description: 

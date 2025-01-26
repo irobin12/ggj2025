@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2414ea24d3b42658c9eeebfac747753, type: 3}
   m_Name: Toaster
   m_EditorClassIdentifier: 
-  health: 3
+  health: 4
   prefab: {fileID: 3299051862029912667, guid: 631e94ac24809634d8b8532515d39f85, type: 3}
   cuteName: Toasty
   description: 
