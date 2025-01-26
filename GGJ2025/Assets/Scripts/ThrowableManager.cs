@@ -29,6 +29,13 @@ public class ThrowableManager : MonoBehaviour
     private float maxImpulseHeldDownTime;
     private float impulseHeldDownTime;
 
+    private void Awake()
+    {
+        cameraInitialPosition = followerCamera.transform.position;
+        cameraInitialRotation = followerCamera.transform.rotation;
+        cameraDeltaPositionFromThrowable = spawnPoint.position - cameraInitialPosition;
+    }
+
     public void Initialise(GameData data, Throwable selectedThrowable)
     {
         CurrentThrowable = selectedThrowable;
@@ -40,9 +47,6 @@ public class ThrowableManager : MonoBehaviour
         CurrentThrowable.TookDamage += OnThrowableDamaged;
         CurrentThrowable.Died += OnThrowableDied;
         CurrentThrowable.Finished += OnThrowableFinished;
-        
-        cameraInitialPosition = followerCamera.transform.position;
-        cameraInitialRotation = followerCamera.transform.rotation;
         
         CurrentThrowable.transform.position = spawnPoint.position;
         CurrentThrowable.transform.rotation = spawnPoint.rotation;

@@ -24,7 +24,7 @@ public class WrapScreen : MonoBehaviour
         SetTexts(throwableName, hp, assigned, remaining);
 
         bool hasWrapRemaining = remaining > 0;
-        bool hasWrapAssigned = assigned > 0;
+        bool hasWrapAssigned = assigned > WrapManager.MinWrapAmount;
         SetButtons(hasWrapRemaining, hasWrapAssigned, !hasWrapRemaining);
     }
 

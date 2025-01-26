@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WrapManager : MonoBehaviour
 {
+    public const int MinWrapAmount = 1;
     public Action<Throwable> StartClicked;
     
     [SerializeField] private WrapScreen wrapScreen;
@@ -45,7 +46,7 @@ public class WrapManager : MonoBehaviour
             var data = throwablesData[index];
             var instance = Instantiate(data.Prefab, transform);
             instance.Initialise(gameData.SidewaysMoveImpulse, data);
-            instance.SetAssignedWrap(0, maxWrapAmount, maxWrapOpacity);
+            instance.SetAssignedWrap(MinWrapAmount, maxWrapAmount, maxWrapOpacity);
             Throwables[index] = instance;
             instance.gameObject.SetActive(false);
         }
@@ -84,17 +85,7 @@ public class WrapManager : MonoBehaviour
 
     private void OnStartClicked()
     {
-        GameManager.ThrowableQueue = new Queue<Throwable>(Throwables);
-
-        // bool firstItemDone = false;
-        // for (int i = CurrentThrowableIndex; i < Throwables.Length; i++)
-        // {
-        //     
-        //     var t = Throwables[i];
-        //     ThrowableQueue.Enqueue(t);
-        //     firstItemDone = true;
-        //
-        // }
+        GameManager.throwableQueue = new Queue<Throwable>();
 
         int iteration = 0;
         int index = CurrentThrowableIndex;
@@ -106,7 +97,7 @@ public class WrapManager : MonoBehaviour
                 index = 0;
             }
             var t = Throwables[index];
-            GameManager.ThrowableQueue.Enqueue(t);
+            GameManager.throwableQueue.Enqueue(t);
             iteration++;
             index++;
         }

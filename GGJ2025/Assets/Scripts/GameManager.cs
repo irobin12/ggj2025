@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static Queue<Throwable> ThrowableQueue = new Queue<Throwable>();
+    public static Queue<Throwable> throwableQueue;
     private const int DefaultLevelIndex = 0;
     [SerializeField] private GameData gameData;
     [SerializeField] private ThrowableManager throwableManager;
@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     
     private void Awake()
     {
-        // throwableManager.Initialise(gameData);
         Inputs.Set(gameData.InputData);
         LevelsManager.SetUp(gameData.LevelNames);
         LevelsManager.LoadLevelAdditive(DefaultLevelIndex);
@@ -29,11 +28,28 @@ public class GameManager : MonoBehaviour
 
     private void OnStartClicked(Throwable throwable)
     {
-        PrepareLauncher(ThrowableQueue.Dequeue());
+        PrepareLauncher(throwableQueue.Dequeue());
     }
 
-    private void PrepareLauncher(Throwable throwable)
+    private void PrepareLauncher(Throwable throwable, int secondsToWait = 0)
     {
+        throwableManager.Initialise(gameData, throwable);
+        
+        throwableManager.ThrowableDamaged -= OnThrowableDamaged;
+        throwableManager.ThrowableDied -= OnThrowableDied;
+        throwableManager.ThrowableFinished -= OnThrowableFinished;
+        
+        throwableManager.ThrowableDamaged += OnThrowableDamaged;
+        throwableManager.ThrowableDied += OnThrowableDied;
+        throwableManager.ThrowableFinished += OnThrowableFinished;
+
+        StartCoroutine(ChangeGameState(GameStatesManager.States.Launch));
+    }
+
+    private IEnumerator RestartLauncherOnFinished(Throwable throwable, int secondsToWait = 0)
+    {
+        yield return new WaitForSeconds(secondsToWait);
+        
         throwableManager.Initialise(gameData, throwable);
         
         throwableManager.ThrowableDamaged -= OnThrowableDamaged;
@@ -50,13 +66,14 @@ public class GameManager : MonoBehaviour
     private void OnThrowableFinished(Throwable throwable)
     {
         // Final score: Remaining character health * Remaining bubble-wrap.
-        var thisScore = throwable.CurrentHealth * throwable.CurrentWrap;
+        // Ah, yeah I didn't think of that. Is it possible to set the scoring to a minimum of 1? without resetting Bubble wrap HP
+        var thisScore = Mathf.Max(1, throwable.CurrentHealth * throwable.CurrentWrap);
         finalScore += thisScore;
         saveCount++;
 
-        if (ThrowableQueue.Count > 0)
+        if (throwableQueue.Count > 0)
         {
-            PrepareLauncher(ThrowableQueue.Dequeue());
+            StartCoroutine(RestartLauncherOnFinished(throwableQueue.Dequeue(), 2));
         }
         else
         {
@@ -70,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     private void OnThrowableDamaged(Throwable throwable)
     {
-        uiManager.UpdateHUD(throwable);
+        uiManager.UpdateHUD(throwable, finalScore);
     }
 
     // Coroutine to avoid the click going through to the launch too early
@@ -99,9 +116,11 @@ public class GameManager : MonoBehaviour
                 firstRun = false;
                 throwableManager.ShowThrower(true);
                 throwableManager.Restart();
+                uiManager.SetLaunchUI(finalScore);
                 break;
             case GameStatesManager.States.Rolling:
                 uiManager.SetHUD(throwableManager.CurrentThrowable.Icon, throwableManager.CurrentThrowable.MaxHealthPoints, throwableManager.CurrentThrowable.AssignedWrap);
+                uiManager.UpdateHUD(throwableManager.CurrentThrowable, finalScore);
                 break;
             case GameStatesManager.States.GameOver:
                 uiManager.SetGameOver(saveCount, finalScore);
@@ -144,7 +163,8 @@ public class GameManager : MonoBehaviour
     {
         if (Inputs.IsKeyUp(Inputs.Restart))
         {
-            GameStatesManager.SetGameState(GameStatesManager.States.Launch);
+            StartCoroutine(ChangeGameState(GameStatesManager.States.Launch));
+            // GameStatesManager.SetGameState(GameStatesManager.States.Launch);
         }
     }
 }
