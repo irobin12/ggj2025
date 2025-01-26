@@ -41,7 +41,6 @@ public class Throwable : MonoBehaviour
     {
         if (other.gameObject.CompareTag(ObstacleTag))
         {
-            Debug.Log("Collision enter");
             currentCollisionsCount++;
 
             if (!stayingInCollision)
@@ -58,7 +57,6 @@ public class Throwable : MonoBehaviour
     {
         if (other.gameObject.CompareTag(FinishLineTag))
         {
-            Debug.Log("Finished!");
             Finished?.Invoke();
         }
     }
@@ -69,12 +67,10 @@ public class Throwable : MonoBehaviour
         
         if (CurrentWrap == 0)
         {
-            Debug.Log("Lose 1HP!");
             CurrentHealth--;
         }
         else
         {
-            Debug.Log("Lose 1 Wrap!");
             CurrentWrap--;
         }
         
@@ -82,7 +78,6 @@ public class Throwable : MonoBehaviour
         
         if (CurrentHealth == 0)
         {
-            Debug.Log("You DIED");
             Died?.Invoke();
         }
     }

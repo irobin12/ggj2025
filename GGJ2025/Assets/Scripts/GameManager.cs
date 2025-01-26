@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
         var thisScore = throwable.CurrentHealth * Mathf.Max(1, throwable.CurrentWrap);
         finalScore += thisScore;
         saveCount++;
+        
+        uiManager.UpdateHUD(throwableManager.CurrentThrowable, finalScore, saveCount, MaxThrowables);
 
         if (throwableQueue.Count > 0)
         {
