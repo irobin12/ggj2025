@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static Queue<Throwable> ThrowableQueue = new Queue<Throwable>();
     private const int DefaultLevelIndex = 0;
     [SerializeField] private GameData gameData;
     [SerializeField] private ThrowableManager throwableManager;
@@ -12,6 +14,7 @@ public class GameManager : MonoBehaviour
     private bool firstRun = true;
     private int saveCount = 0;
     private int finalScore = 0;
+    private int currentThrowableIndex;
     
     private void Awake()
     {
@@ -26,12 +29,39 @@ public class GameManager : MonoBehaviour
 
     private void OnStartClicked(Throwable throwable)
     {
+        PrepareLauncher(ThrowableQueue.Dequeue());
+    }
+
+    private void PrepareLauncher(Throwable throwable)
+    {
         throwableManager.Initialise(gameData, throwable);
+        
         throwableManager.ThrowableDamaged -= OnThrowableDamaged;
         throwableManager.ThrowableDied -= OnThrowableDied;
+        throwableManager.ThrowableFinished -= OnThrowableFinished;
+        
         throwableManager.ThrowableDamaged += OnThrowableDamaged;
         throwableManager.ThrowableDied += OnThrowableDied;
+        throwableManager.ThrowableFinished += OnThrowableFinished;
+
         StartCoroutine(ChangeGameState(GameStatesManager.States.Launch));
+    }
+
+    private void OnThrowableFinished(Throwable throwable)
+    {
+        // Final score: Remaining character health * Remaining bubble-wrap.
+        var thisScore = throwable.CurrentHealth * throwable.CurrentWrap;
+        finalScore += thisScore;
+        saveCount++;
+
+        if (ThrowableQueue.Count > 0)
+        {
+            PrepareLauncher(ThrowableQueue.Dequeue());
+        }
+        else
+        {
+            throwableManager.FinishGame();
+        }
     }
 
     private void OnThrowableDied(Throwable throwable)

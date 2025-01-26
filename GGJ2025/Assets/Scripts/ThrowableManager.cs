@@ -5,6 +5,7 @@ public class ThrowableManager : MonoBehaviour
 {
     public Action<Throwable> ThrowableDamaged;
     public Action<Throwable> ThrowableDied;
+    public Action<Throwable> ThrowableFinished;
     
     [SerializeField] private Camera followerCamera;
     [SerializeField] private Transform spawnPoint;
@@ -31,10 +32,14 @@ public class ThrowableManager : MonoBehaviour
     public void Initialise(GameData data, Throwable selectedThrowable)
     {
         CurrentThrowable = selectedThrowable;
+        
         CurrentThrowable.TookDamage -= OnThrowableDamaged;
         CurrentThrowable.Died -= OnThrowableDied;
+        CurrentThrowable.Finished -= OnThrowableFinished;
+        
         CurrentThrowable.TookDamage += OnThrowableDamaged;
         CurrentThrowable.Died += OnThrowableDied;
+        CurrentThrowable.Finished += OnThrowableFinished;
         
         cameraInitialPosition = followerCamera.transform.position;
         cameraInitialRotation = followerCamera.transform.rotation;
@@ -56,9 +61,19 @@ public class ThrowableManager : MonoBehaviour
         ShowLauncherVisuals(true);
     }
 
+    private void OnThrowableFinished()
+    {
+        ThrowableFinished?.Invoke(CurrentThrowable);
+    }
+
     private void OnThrowableDied()
     {
         ThrowableDied?.Invoke(CurrentThrowable);
+        FinishGame();
+    }
+
+    public void FinishGame()
+    {
         CurrentThrowable.gameObject.SetActive(false);
         GameStatesManager.SetGameState(GameStatesManager.States.GameOver);
     }

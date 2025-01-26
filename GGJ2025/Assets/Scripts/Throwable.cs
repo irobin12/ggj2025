@@ -6,8 +6,10 @@ public class Throwable : MonoBehaviour
 {
     public Action TookDamage;
     public Action Died;
+    public Action Finished;
     
     private const string ObstacleTag = "Obstacle";
+    private const string FinishLineTag = "FinishLine";
     public string Name => throwableData.CuteName;
     public int MaxHealthPoints => throwableData.Health;
     public Sprite Icon => throwableData.Icon;
@@ -48,6 +50,16 @@ public class Throwable : MonoBehaviour
             }
 
             stayingInCollision = true;
+        } 
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(FinishLineTag))
+        {
+            Debug.Log("Finished!");
+            Finished?.Invoke();
         }
     }
 

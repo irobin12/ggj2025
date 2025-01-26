@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WrapManager : MonoBehaviour
@@ -9,9 +10,9 @@ public class WrapManager : MonoBehaviour
     [Range(0.1f, 1f)][Tooltip("In %")]
     [SerializeField] private float maxWrapOpacity = 0.25f;
     
-    private Throwable[] throwables;
-    private Throwable currentThrowable;
-    private int currentThrowableIndex;
+    public Throwable[] Throwables { get; private set; }
+    public Throwable CurrentThrowable { get; private set; }
+    public int CurrentThrowableIndex { get; private set; }
 
     private int maxWrapAmount;
     private int totalAssignedWrap;
@@ -31,7 +32,7 @@ public class WrapManager : MonoBehaviour
         wrapScreen.StartClicked += OnStartClicked;
         
         ThrowableData[] throwablesData = gameData.Throwables;
-        throwables = new Throwable[throwablesData.Length];
+        Throwables = new Throwable[throwablesData.Length];
 
         for (int i = transform.childCount - 1; i >= 0; i--)
         {
@@ -45,7 +46,7 @@ public class WrapManager : MonoBehaviour
             var instance = Instantiate(data.Prefab, transform);
             instance.Initialise(gameData.SidewaysMoveImpulse, data);
             instance.SetAssignedWrap(0, maxWrapAmount, maxWrapOpacity);
-            throwables[index] = instance;
+            Throwables[index] = instance;
             instance.gameObject.SetActive(false);
         }
         
@@ -54,35 +55,62 @@ public class WrapManager : MonoBehaviour
 
     private void SelectThrowable(int index)
     {
-        if(index < 0) index = throwables.Length - 1;
-        else if (index >= throwables.Length) index = 0;
+        if(index < 0) index = Throwables.Length - 1;
+        else if (index >= Throwables.Length) index = 0;
         
-        if(currentThrowable) currentThrowable.gameObject.SetActive(false);
-        currentThrowableIndex = index;
-        currentThrowable = throwables[index];   
-        currentThrowable.gameObject.SetActive(true);
+        if(CurrentThrowable) CurrentThrowable.gameObject.SetActive(false);
+        CurrentThrowableIndex = index;
+        CurrentThrowable = Throwables[index];   
+        CurrentThrowable.gameObject.SetActive(true);
         SetUI();
     }
 
     private void SetUI()
     {
-        wrapScreen.Set(currentThrowable.Name, currentThrowable.MaxHealthPoints, currentThrowable.AssignedWrap, RemainingWrap );
+        wrapScreen.Set(CurrentThrowable.Name, CurrentThrowable.MaxHealthPoints, CurrentThrowable.AssignedWrap, RemainingWrap );
     }
 
     private void OnSelectionChanged(int delta)
     {
-        SelectThrowable(currentThrowableIndex + delta);
+        SelectThrowable(CurrentThrowableIndex + delta);
     }
     
     private void OnAmountChanged(int delta)
     {
-        currentThrowable.SetAssignedWrap(currentThrowable.AssignedWrap + delta, maxWrapAmount, maxWrapOpacity);
+        CurrentThrowable.SetAssignedWrap(CurrentThrowable.AssignedWrap + delta, maxWrapAmount, maxWrapOpacity);
         totalAssignedWrap += delta;
         SetUI();
     }
 
     private void OnStartClicked()
     {
-        StartClicked?.Invoke(currentThrowable);
+        GameManager.ThrowableQueue = new Queue<Throwable>(Throwables);
+
+        // bool firstItemDone = false;
+        // for (int i = CurrentThrowableIndex; i < Throwables.Length; i++)
+        // {
+        //     
+        //     var t = Throwables[i];
+        //     ThrowableQueue.Enqueue(t);
+        //     firstItemDone = true;
+        //
+        // }
+
+        int iteration = 0;
+        int index = CurrentThrowableIndex;
+
+        while (iteration < Throwables.Length)
+        {
+            if (index >= Throwables.Length)
+            {
+                index = 0;
+            }
+            var t = Throwables[index];
+            GameManager.ThrowableQueue.Enqueue(t);
+            iteration++;
+            index++;
+        }
+        
+        StartClicked?.Invoke(CurrentThrowable);
     }
 }
