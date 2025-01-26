@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -90}
-  m_SizeDelta: {x: 0, y: -180}
+  m_AnchoredPosition: {x: 0, y: -140}
+  m_SizeDelta: {x: 0, y: -280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7634891895067161739
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
     m_Top: 24
     m_Bottom: 24
   m_ChildAlignment: 1
-  m_Spacing: 100
+  m_Spacing: 70
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -230,8 +230,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -90}
-  m_SizeDelta: {x: 0, y: -180}
+  m_AnchoredPosition: {x: 0, y: -140}
+  m_SizeDelta: {x: 0, y: -280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8754966533991825069
 MonoBehaviour:
@@ -251,7 +251,7 @@ MonoBehaviour:
     m_Top: 24
     m_Bottom: 24
   m_ChildAlignment: 1
-  m_Spacing: 100
+  m_Spacing: 70
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -479,6 +479,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1135080460050150569}
     m_Modifications:
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 51a5715cef0a5fb4d8ec240291223357, type: 2}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 21445f4203f98974cb7b3f741d12b223, type: 2}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125656173143404488, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
+      propertyPath: m_fontColorGradientPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: 081858b68f2eefb4aa2cdf45a508905c, type: 2}
     - target: {fileID: 1137622777407871249, guid: 482bb70e62a1a4fba99034a3345cfdc2, type: 3}
       propertyPath: m_Name
       value: Header
