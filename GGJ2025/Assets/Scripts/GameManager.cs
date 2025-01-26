@@ -124,6 +124,8 @@ public class GameManager : MonoBehaviour
                 break;
             case GameStatesManager.States.GameOver:
                 uiManager.SetGameOver(saveCount, finalScore);
+                finalScore = 0;
+                saveCount = 0;
                 break;
         }
     }
@@ -140,15 +142,12 @@ public class GameManager : MonoBehaviour
             case GameStatesManager.States.Launch:
             {
                 UpdateLaunch();
-
                 break;
             }
 
             case GameStatesManager.States.Rolling:
-            case GameStatesManager.States.GameOver:
             {
                 Restart();
-
                 break;
             }
         }
@@ -164,7 +163,6 @@ public class GameManager : MonoBehaviour
         if (Inputs.IsKeyUp(Inputs.Restart))
         {
             StartCoroutine(ChangeGameState(GameStatesManager.States.Launch));
-            // GameStatesManager.SetGameState(GameStatesManager.States.Launch);
         }
     }
 }
